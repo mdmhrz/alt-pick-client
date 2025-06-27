@@ -7,8 +7,10 @@ import SignIn from "../Pages/SignIn/SignIn";
 import Register from "../Pages/Register/Register";
 import RecommendationForMe from "../Pages/RecommendatationForMe/RecommendationForMe";
 import PrivateRoute from "./PrivateRoute";
-import MyQuaries from "../Pages/MyQuaries/MyQuaries";
 import MyRecommendations from "../Pages/MyRecommendations/MyRecommendations";
+import AddQuery from "../Pages/AddQuery/AddQuery";
+import MyQueries from "../Pages/MyQuaries/MyQuaries";
+
 
 
 const router = createBrowserRouter([
@@ -34,15 +36,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/recommendationsForMe',
-                Component: RecommendationForMe
+                element: <PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
             },
             {
                 path: '/myQuaries',
-                Component: MyQuaries
+                element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>
             },
             {
                 path: '/myRecommendations',
-                Component: MyRecommendations
+                element: <PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
+            },
+            {
+                path: '/add-query',
+                element: <PrivateRoute><AddQuery></AddQuery></PrivateRoute>
             },
 
         ]

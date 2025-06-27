@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
-    const { user, signOutUser } = use(AuthContext);
+    const { user, signOutUser, setLoading } = use(AuthContext);
 
     const handleSignOut = () => {
         Swal.fire({
@@ -20,9 +20,10 @@ const Navbar = () => {
             confirmButtonText: 'Yes, Sign Out',
         }).then((result) => {
             if (result.isConfirmed) {
+                setLoading(true)
                 signOutUser();
                 toast.success('Account signed out successfully');
-                setMobileMenuOpen(false);
+                // setMobileMenuOpen(false);
             }
         });
     };
@@ -66,7 +67,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
-                        <Link onClick={handleSignOut} className='btn btn-accent'>Sign Out</Link>
+                        <button onClick={handleSignOut} className='btn btn-accent'>Sign Out</button>
                     </> :
                         <>
                             <Link to="/login" className='btn btn-primary'>Sign In</Link>
