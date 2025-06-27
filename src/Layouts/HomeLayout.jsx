@@ -3,7 +3,7 @@ import Banner from '../components/Banner/Banner';
 
 const HomeLayout = () => {
     return (
-        <div className='min-h-screen'>
+        <div>
             <Banner></Banner>
         </div>
     );

@@ -50,11 +50,11 @@ const Banner = () => {
                         className={`absolute inset-0 transition-opacity duration-1000 ${index === activeSlide ? "opacity-100" : "opacity-0"
                             }`}
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent z-10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent z-10"></div>
                         <img
                             src={slide.imageUrl}
                             alt={slide.title}
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top blur-[3px]"
                         />
                         <div className="absolute inset-0 flex items-center z-20">
                             <div className="w-11/12 mx-auto px-6">
@@ -65,7 +65,7 @@ const Banner = () => {
                                     <p className="text-xl text-white mb-8">{slide.description}</p>
                                     <button
                                         onClick={() => setCurrentView("queries")}
-                                        className="bg-secondary border-0 rounded-md btn btn-lg text-white px-6 py-3 rounded-button text-lg font-medium transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                                        className="btn btn-primary"
                                     >
                                         Explore Queries
                                     </button>

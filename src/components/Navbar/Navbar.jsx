@@ -1,13 +1,48 @@
 import React from 'react';
+import { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+
+    const { user, signOutUser } = use(AuthContext);
+
+    const handleSignOut = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Your account will be signed out',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#422ad5',
+            cancelButtonColor: 'red',
+            confirmButtonText: 'Yes, Sign Out',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                signOutUser();
+                toast.success('Account signed out successfully');
+                setMobileMenuOpen(false);
+            }
+        });
+    };
+
+
+    console.log(user);
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/quaries'>Quaries</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
+                <li><NavLink to='/myQuaries'>My Queries</NavLink></li>
+                <li><NavLink to='/myRecommendations'>My recommendations</NavLink></li>
+            </>
+        }
     </>
     return (
-        <div className="navbar bg-primary shadow-sm">
+        <div className="navbar shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,8 +63,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3">
-                <Link to="/signIn" className='btn'>SighIn</Link>
-                <Link to='/register' className='btn'>Register</Link>
+                {
+                    user ? <>
+                        <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
+                        <Link onClick={handleSignOut} className='btn btn-accent'>Sign Out</Link>
+                    </> :
+                        <>
+                            <Link to="/login" className='btn btn-primary'>Sign In</Link>
+                            <Link to='/register' className='btn btn-primary btn-outline'>Register</Link>
+                        </>
+                }
             </div>
         </div>
     );

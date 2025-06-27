@@ -93,9 +93,9 @@ const SignIn = () => {
                 <title>Sign In | Hobby Hub</title>
             </Helmet> */}
 
-            <div className="min-h-[calc(100vh-64px)] flex items-center justify-center px-4">
+            <div className="min-h-[calc(100vh-64px)] bg-base-300 flex items-center justify-center px-4">
                 <motion.div
-                    className="w-full max-w-sm p-8 rounded-xl shadow-2xl bg-primary/20 border border-base-300"
+                    className="w-full max-w-sm p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -124,7 +124,7 @@ const SignIn = () => {
                                 <span className="label-text text-base-content">Email</span>
                             </label>
                             <div className="relative">
-                                <FaUserAlt className="absolute top-1/2 left-3 -translate-y-1/2 text-base-content/60" />
+                                <FaUserAlt className="absolute top-1/2 left-3 -translate-y-1/2 text-secondary z-50" />
                                 <input
                                     defaultValue={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -144,7 +144,7 @@ const SignIn = () => {
                                 <span className="label-text text-base-content">Password</span>
                             </label>
                             <div className="relative">
-                                <FaLock className="absolute top-1/2 left-3 -translate-y-1/2 text-base-content/60" />
+                                <FaLock className="absolute top-1/2 left-3 -translate-y-1/2 text-secondary z-50" />
                                 <input
                                     id="password"
                                     type="password"
@@ -209,8 +209,8 @@ const SignIn = () => {
                         transition={{ delay: 0.4 }}
                     >
                         Don’t have an account?{" "}
-                        <Link state={location.state} to="/auth/signup" className="text-primary font-medium hover:underline">
-                            Sign up
+                        <Link state={location.state} to="/register" className="text-primary font-medium hover:underline">
+                            Register
                         </Link>
                     </motion.p>
                 </motion.div>

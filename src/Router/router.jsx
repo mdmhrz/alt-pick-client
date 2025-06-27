@@ -5,6 +5,10 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Quaries from "../Pages/Quaries/Quaries";
 import SignIn from "../Pages/SignIn/SignIn";
 import Register from "../Pages/Register/Register";
+import RecommendationForMe from "../Pages/RecommendatationForMe/RecommendationForMe";
+import PrivateRoute from "./PrivateRoute";
+import MyQuaries from "../Pages/MyQuaries/MyQuaries";
+import MyRecommendations from "../Pages/MyRecommendations/MyRecommendations";
 
 
 const router = createBrowserRouter([
@@ -21,13 +25,26 @@ const router = createBrowserRouter([
                 Component: Quaries
             },
             {
-                path: '/signIn',
+                path: '/login',
                 Component: SignIn
             },
             {
                 path: '/register',
                 Component: Register
-            }
+            },
+            {
+                path: '/recommendationsForMe',
+                Component: RecommendationForMe
+            },
+            {
+                path: '/myQuaries',
+                Component: MyQuaries
+            },
+            {
+                path: '/myRecommendations',
+                Component: MyRecommendations
+            },
+
         ]
     },
     {

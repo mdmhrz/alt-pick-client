@@ -1,4 +1,7 @@
 import React from 'react';
+import { motion } from "motion/react";
+import { Link } from 'react-router';
+import { FaHome } from 'react-icons/fa';
 
 const ErrorPage = () => {
     return (

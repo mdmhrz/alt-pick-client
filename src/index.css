@@ -2,23 +2,5 @@
 
 
 @plugin "daisyui" {
-  themes: black --default;
-}
-
-
-@plugin "daisyui/theme" {
-  name: "mintyDark";
-  default: true;
-  --color-primary: #4635B1;
-  /* Deep Purple */
-  --color-secondary: #34D399;
-  /* Mint Green (Emerald-400) */
-  --color-accent: #F4F4F5;
-  /* Zinc-100 / Lightest gray */
-  --color-base-100: #0A0A0A;
-  /* Near black */
-  --color-base-200: #18181B;
-  /* Slate-900 */
-  --color-base-300: #2D2D31;
-  /* Dark neutral card background */
+  themes: night --default;
 }

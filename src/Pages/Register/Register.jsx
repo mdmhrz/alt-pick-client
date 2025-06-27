@@ -113,7 +113,7 @@ const Register = () => {
             {/* <Helmet>
                 <title>Sign Up | Hobby Hub</title>
             </Helmet> */}
-            <div className="min-h-[calc(100vh-64px)] bg-base-200 py-10 flex items-center justify-center px-4">
+            <div className="min-h-[calc(100vh-64px)] bg-base-300 py-10 flex items-center justify-center px-4">
                 <motion.div
                     className="w-full max-w-sm p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -242,8 +242,8 @@ const Register = () => {
                         transition={{ delay: 0.5 }}
                     >
                         Already have an account?{" "}
-                        <Link to="/auth/signin" className="text-primary font-medium hover:underline">
-                            Sign in
+                        <Link to="/login" className="text-primary font-medium hover:underline">
+                            Log In
                         </Link>
                     </motion.p>
                 </motion.div>
