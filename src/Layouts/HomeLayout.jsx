@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../components/Banner/Banner';
 import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs';
+import RecentQuery from '../components/RecentQuery/RecentQuery';
 
 const HomeLayout = () => {
 
@@ -8,6 +9,7 @@ const HomeLayout = () => {
     return (
         <div>
             <Banner></Banner>
+            <RecentQuery></RecentQuery>
             <WhyChooseUs></WhyChooseUs>
         </div>
     );
