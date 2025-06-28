@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 const MyQueries = () => {
     const { user } = useAuth();
+    console.log(user.accessToken);
     const [userQueries, setUserQueries] = useState([]);
     const [selectedQuery, setSelectedQuery] = useState(null);
     // console.log(selectedQuery._id);
@@ -23,7 +24,11 @@ const MyQueries = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/queries/userEmail/${user.email}`)
+        axios.get(`http://localhost:3000/queries/userEmail/${user.email}`, {
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`,
+            }
+        })
             .then((res) => {
                 const sorted = res.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 setUserQueries(sorted);

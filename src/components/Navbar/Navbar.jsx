@@ -1,14 +1,17 @@
 import React from 'react';
-import { use } from 'react';
 import { Link, NavLink } from 'react-router';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import './Navbar.css'
+import { useState } from 'react';
+import signOutAnimation from '../../assets/logout.json'
+import Lottie from 'lottie-react';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
 
-    const { user, signOutUser, setLoading } = use(AuthContext);
+    const { user, signOutUser } = useAuth();
+    const [isSignOut, setIsSignOut] = useState(false);
 
     const handleSignOut = () => {
         Swal.fire({
@@ -21,16 +24,27 @@ const Navbar = () => {
             confirmButtonText: 'Yes, Sign Out',
         }).then((result) => {
             if (result.isConfirmed) {
-                setLoading(true)
-                signOutUser();
-                toast.success('Account signed out successfully');
-                // setMobileMenuOpen(false);
+                setIsSignOut(true);
+
+                setTimeout(() => {
+                    setIsSignOut(false);
+                    signOutUser();
+                    toast.success('Account signed out successfully');
+                }, 2000);
             }
         });
     };
 
 
-    console.log(user);
+
+
+    if (isSignOut) {
+        return (
+            <div className='flex items-center justify-center min-h-screen'>
+                <Lottie animationData={signOutAnimation} loop={true} className='w-72 h-72'></Lottie>
+            </div>
+        )
+    }
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>

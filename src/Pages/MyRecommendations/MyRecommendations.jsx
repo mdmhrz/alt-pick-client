@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Loading from "../../components/Loading/Loading";
 import MyRecommendationsList from "./MyRecommendationsList";
+import axios from "axios";
 
 const MyRecommendations = () => {
     const { user } = useAuth();
@@ -11,12 +12,18 @@ const MyRecommendations = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/recommendations/recommenderEmail/${user.email}`)
+            fetch(`http://localhost:3000/recommendations/recommenderEmail/${user.email}`, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`,
+                }
+            })
                 .then(res => res.json())
                 .then(data => setMyRecommendations(data))
                 .catch(() => toast.error("Failed to load your recommendations"))
                 .finally(() => setLoading(false));
         }
+
+
     }, [user?.email]);
 
     const handleDelete = async (rec) => {

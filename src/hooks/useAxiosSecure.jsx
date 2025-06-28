@@ -12,9 +12,10 @@ const useAxiosSecure = () => {
     const { user, signOutUser } = useAuth()
 
     axiosInstance.interceptors.request.use(config => {
-        config.headers.authorization = `Bearer ${user.accessToken}`
+        config.headers.Authorization = `Bearer ${user.accessToken}`
         return config;
     })
+
 
     axiosInstance.interceptors.response.use(response => {
         return response

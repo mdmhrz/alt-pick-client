@@ -33,7 +33,7 @@ const Queries = () => {
         }
     };
 
-    // 🔍 Filtered Queries
+    // Filtered Queries
     const filteredQueries = queries.filter((query) =>
         query.productName.toLowerCase().includes(searchTerm.toLowerCase())
     );
