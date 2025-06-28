@@ -1,0 +1,9 @@
+li .active {
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+li a {
+    color: rgb(45, 153, 153);
+}

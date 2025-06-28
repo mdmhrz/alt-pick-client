@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import './Navbar.css'
 
 const Navbar = () => {
 
@@ -67,7 +68,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <button onClick={handleSignOut} className='btn btn-accent'>Sign Out</button>
-                        <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
+                        <img title={user.displayName} className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
                     </> :
                         <>
                             <Link to="/login" className='btn btn-primary'>Sign In</Link>
