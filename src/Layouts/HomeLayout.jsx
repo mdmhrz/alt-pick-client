@@ -4,6 +4,7 @@ import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs';
 import RecentQuery from '../components/RecentQuery/RecentQuery';
 import { Suspense } from 'react';
 import Loading from '../components/Loading/Loading';
+import JoinCommunityCTA from '../components/JoinCommunityCTA/JoinCommunityCTA';
 
 const HomeLayout = () => {
 
@@ -15,6 +16,7 @@ const HomeLayout = () => {
                 <RecentQuery queryPromise={queryPromise}></RecentQuery>
             </Suspense>
             <WhyChooseUs></WhyChooseUs>
+            <JoinCommunityCTA></JoinCommunityCTA>
         </div>
     );
 };

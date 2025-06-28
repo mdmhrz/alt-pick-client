@@ -44,20 +44,10 @@ const RecentQuery = ({ queryPromise }) => {
                         }}
                         onSlideChange={() => { }}
                     >
-                        {queries.map((query, index) => (
+                        {queries.map((query) => (
                             <SwiperSlide key={query._id} className="group transition-all duration-500">
-                                <div className="relative bg-white p-6 rounded-2xl shadow-xl border border-base-300 h-[400px] flex flex-col justify-between transform transition-all duration-300 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100 scale-90 opacity-40">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <img
-                                            src={query.userImage}
-                                            alt={query.name}
-                                            className="w-10 h-10 rounded-full object-cover border"
-                                        />
-                                        <div>
-                                            <h4 className="font-semibold text-primary text-sm">{query.name}</h4>
-                                            <p className="text-xs text-gray-400">{query.userEmail}</p>
-                                        </div>
-                                    </div>
+                                <div className="relative bg-white p-6 rounded-2xl shadow-xl border border-base-300 h-[440px] flex flex-col justify-between transform transition-all duration-300 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100 scale-90 opacity-40">
+
 
                                     <div className="flex-1">
                                         <h3 className="text-base font-bold text-secondary mb-2">
@@ -68,9 +58,20 @@ const RecentQuery = ({ queryPromise }) => {
                                             <img
                                                 src={query.productImageUrl}
                                                 alt={query.productName}
-                                                className="mt-4 w-full h-28 object-cover rounded-md"
+                                                className="mt-4 w-full h-40 object-cover rounded-md"
                                             />
                                         )}
+                                    </div>
+                                    <div className="flex items-center gap-3 mt-4">
+                                        <img
+                                            src={query.userImage}
+                                            alt={query.name}
+                                            className="w-10 h-10 rounded-full object-cover border"
+                                        />
+                                        <div>
+                                            <h4 className="font-semibold text-primary text-sm">{query.name}</h4>
+                                            <p className="text-xs text-gray-400">{query.userEmail}</p>
+                                        </div>
                                     </div>
 
                                     <div className="text-xs text-gray-400 mt-4 border-t pt-3 space-y-1">
