@@ -5,9 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import successAnimation from "../../assets/login.json";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useContext } from "react";
 import { motion } from "motion/react";
+import useAuth from "../../hooks/useAuth";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -18,7 +17,7 @@ const SignIn = () => {
     const [email, setEmail] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
 
-    const { signIn, googleSignIn } = useContext(AuthContext)
+    const { signIn, googleSignIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 

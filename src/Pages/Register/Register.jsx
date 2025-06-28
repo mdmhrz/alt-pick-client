@@ -7,8 +7,8 @@ import { motion } from "motion/react";
 // import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
 import successAnimation from "../../assets/login.json";
-import { useContext } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
+
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -24,7 +24,7 @@ const Register = () => {
     const [showSuccess, setShowSuccess] = useState(false);
 
 
-    const { createUser, setUser, updateUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, setUser, updateUser, googleSignIn } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 

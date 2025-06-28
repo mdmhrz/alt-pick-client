@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyRecommendations from "../Pages/MyRecommendations/MyRecommendations";
 import AddQuery from "../Pages/AddQuery/AddQuery";
 import MyQueries from "../Pages/MyQuaries/MyQuaries";
+import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 
 
 
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><RecommendationForMe></RecommendationForMe></PrivateRoute>
             },
             {
-                path: '/myQuaries',
+                path: '/myQueries',
                 element: <PrivateRoute><MyQueries></MyQueries></PrivateRoute>
             },
             {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
             {
                 path: '/add-query',
                 element: <PrivateRoute><AddQuery></AddQuery></PrivateRoute>
+            },
+            {
+                path: '/query-details/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/queries/${params.id}`),
+                element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
             },
 
         ]

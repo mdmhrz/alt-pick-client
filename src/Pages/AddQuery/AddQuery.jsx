@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const AddQuery = () => {
     const { user } = useContext(AuthContext)
@@ -11,7 +12,7 @@ const AddQuery = () => {
     const [formData, setFormData] = useState({
         productName: "",
         productBrand: "",
-        imageUrl: "",
+        productImageUrl: "",
         queryTitle: "",
         reason: "",
     });
@@ -21,40 +22,54 @@ const AddQuery = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!user) {
-            toast.error("You must be logged in to submit a query.");
-            return;
-        }
+
 
         const fullQuery = {
             ...formData,
             userEmail: user.email,
-            userName: user.displayName,
+            name: user.displayName,
             userImage: user.photoURL,
             timestamp: new Date().toISOString(),
             recommendationCount: 0,
         };
 
-        try {
-            const res = await fetch("https://your-api-endpoint.com/queries", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(fullQuery),
-            });
+        console.log(fullQuery);
 
-            const data = await res.json();
-            if (data.insertedId || res.ok) {
-                toast.success("Query added successfully!");
-                navigate("/myQueries");
-            } else {
-                throw new Error("Failed to add query.");
-            }
-        } catch (error) {
-            toast.error(error.message || "Something went wrong.");
-        }
+        axios.post('http://localhost:3000/queries', { ...fullQuery })
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    toast.success("Query added successfully!");
+                    navigate("/myQueries");
+                } else {
+                    toast.warn('Failed to add query')
+                    // throw new Error("Failed to add query.");
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+        // try {
+        //     const res = await fetch("https://your-api-endpoint.com/queries", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(fullQuery),
+        //     });
+
+        //     const data = await res.json();
+        //     if (data.insertedId || res.ok) {
+        //         toast.success("Query added successfully!");
+        //         navigate("/myQueries");
+        //     } else {
+        //         throw new Error("Failed to add query.");
+        //     }
+        // } catch (error) {
+        //     toast.error(error.message || "Something went wrong.");
+        // }
     };
 
     return (
@@ -90,10 +105,10 @@ const AddQuery = () => {
                     <label className="label font-semibold">Product Image URL</label>
                     <input
                         type="url"
-                        name="imageUrl"
+                        name="productImageUrl"
                         className="input input-bordered w-full"
                         required
-                        value={formData.imageUrl}
+                        value={formData.productImageUrl}
                         onChange={handleChange}
                     />
                 </div>
