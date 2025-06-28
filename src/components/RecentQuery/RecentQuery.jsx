@@ -1,31 +1,96 @@
-import React from "react";
+"use client";
 
-const RecentQuery = ({ queries = [] }) => {
+import React from "react";
+import { FaUser, FaRegClock, FaTag, FaIndustry } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+import "./RecentQueryStyles.css"; // Custom styles for fade + scale effect
+
+const RecentQuery = ({ queryPromise }) => {
+    const queries = React.use(queryPromise);
+
     return (
-        <div className="bg-base-100 p-4 rounded-xl shadow-md w-full max-w-4xl mx-auto">
-            <h2 className="text-2xl font-semibold mb-4 text-primary">Recent Queries</h2>
-            <div className="space-y-4">
+        <div className="py-10 px-4 bg-base-100">
+            <div className="text-center mb-10">
+                <h2 className="text-4xl font-bold text-primary">Explore Latest Product Queries</h2>
+                <p className="text-gray-500 text-sm mt-2 max-w-xl mx-auto">
+                    Discover real-time queries from our community. Learn from others and share your own experience.
+                </p>
+            </div>
+
+            <div className="max-w-6xl mx-auto">
                 {queries.length === 0 ? (
-                    <p className="text-gray-500">No recent queries found.</p>
+                    <p className="text-gray-500 text-center">No recent queries found.</p>
                 ) : (
-                    queries.map((query) => (
-                        <div
-                            key={query.id}
-                            className="bg-base-200 p-4 rounded-lg border border-base-300"
-                        >
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-lg font-medium text-secondary">
-                                        {query.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-400">{query.description}</p>
-                                    <p className="text-xs text-gray-500 mt-1">
-                                        Posted by: <span className="font-medium">{query.user}</span> · {query.time}
-                                    </p>
+                    <Swiper
+                        modules={[Autoplay, Pagination]}
+                        autoplay={{ delay: 4000, disableOnInteraction: false }}
+                        loop={true}
+                        centeredSlides={true}
+                        slidesPerView={1.8}
+                        spaceBetween={20}
+                        pagination={{ clickable: true }}
+                        className="recent-query-swiper"
+                        breakpoints={{
+                            768: {
+                                slidesPerView: 2.2,
+                            },
+                            1024: {
+                                slidesPerView: 2.8,
+                            },
+                        }}
+                        onSlideChange={() => { }}
+                    >
+                        {queries.map((query, index) => (
+                            <SwiperSlide key={query._id} className="group transition-all duration-500">
+                                <div className="relative bg-white p-6 rounded-2xl shadow-xl border border-base-300 h-[400px] flex flex-col justify-between transform transition-all duration-300 group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100 scale-90 opacity-40">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <img
+                                            src={query.userImage}
+                                            alt={query.name}
+                                            className="w-10 h-10 rounded-full object-cover border"
+                                        />
+                                        <div>
+                                            <h4 className="font-semibold text-primary text-sm">{query.name}</h4>
+                                            <p className="text-xs text-gray-400">{query.userEmail}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex-1">
+                                        <h3 className="text-base font-bold text-secondary mb-2">
+                                            {query.queryTitle}
+                                        </h3>
+                                        <p className="text-sm text-gray-600 line-clamp-3">{query.reason}</p>
+                                        {query.productImageUrl && (
+                                            <img
+                                                src={query.productImageUrl}
+                                                alt={query.productName}
+                                                className="mt-4 w-full h-28 object-cover rounded-md"
+                                            />
+                                        )}
+                                    </div>
+
+                                    <div className="text-xs text-gray-400 mt-4 border-t pt-3 space-y-1">
+                                        <div className="flex justify-between">
+                                            <p className="flex items-center gap-1">
+                                                <FaTag className="text-primary text-xs" /> {query.productName}
+                                            </p>
+                                            <p className="flex items-center gap-1">
+                                                <FaIndustry className="text-primary text-xs" /> {query.productBrand}
+                                            </p>
+                                        </div>
+                                        <p className="flex items-center gap-1">
+                                            <FaRegClock className="text-primary text-xs" />{" "}
+                                            {new Date(query.timestamp).toLocaleDateString()}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 )}
             </div>
         </div>

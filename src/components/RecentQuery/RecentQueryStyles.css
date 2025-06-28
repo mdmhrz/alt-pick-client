@@ -1,0 +1,10 @@
+.recent-query-swiper .swiper-slide {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: scale(0.9);
+    opacity: 0.4;
+}
+
+.recent-query-swiper .swiper-slide-active {
+    transform: scale(1);
+    opacity: 1;
+}

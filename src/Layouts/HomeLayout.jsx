@@ -2,14 +2,18 @@ import React from 'react';
 import Banner from '../components/Banner/Banner';
 import WhyChooseUs from '../components/WhyChooseUs/WhyChooseUs';
 import RecentQuery from '../components/RecentQuery/RecentQuery';
+import { Suspense } from 'react';
+import Loading from '../components/Loading/Loading';
 
 const HomeLayout = () => {
 
-    const queriesPromise = fetch('https://career-code-server-eight-xi.vercel.app/jobs').then(res => res.json())
+    const queryPromise = fetch('http://localhost:3000/queries/latest').then(res => res.json())
     return (
         <div>
             <Banner></Banner>
-            <RecentQuery></RecentQuery>
+            <Suspense fallback={<Loading></Loading>}>
+                <RecentQuery queryPromise={queryPromise}></RecentQuery>
+            </Suspense>
             <WhyChooseUs></WhyChooseUs>
         </div>
     );
