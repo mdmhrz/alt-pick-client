@@ -1,6 +1,31 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Tiro+Bangla:ital@0;1&display=swap');
 
+@import "tailwindcss";
 
 @plugin "daisyui" {
   themes: light --default;
+}
+
+body {
+  font-family: "Space Grotesk", "Tiro Bangla", serif;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #209187;
+  --color-secondary: #2f3239;
+  --color-accent: #e0ad1f;
+
+
+}
+
+.test {
+  color: #24348b;
+  color: #636363;
+  color: #7499c2;
+  color: #00b4ff;
+  color: #00a63e;
+  color: #e0ad1f;
 }

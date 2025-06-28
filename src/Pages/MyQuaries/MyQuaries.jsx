@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyQueries = () => {
     const { user } = useAuth();
@@ -23,12 +24,11 @@ const MyQueries = () => {
     });
     const navigate = useNavigate();
 
+    const axiosSecure = useAxiosSecure();
+
+
     useEffect(() => {
-        axios.get(`http://localhost:3000/queries/userEmail/${user.email}`, {
-            headers: {
-                Authorization: `Bearer ${user.accessToken}`,
-            }
-        })
+        axiosSecure.get(`/queries/userEmail/${user.email}`)
             .then((res) => {
                 const sorted = res.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 setUserQueries(sorted);

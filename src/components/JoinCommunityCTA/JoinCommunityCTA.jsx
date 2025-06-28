@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "motion/react";
 import { FaCheckCircle } from "react-icons/fa";
@@ -7,11 +5,11 @@ import { Link } from "react-router";
 
 const JoinCommunityCTA = () => {
     return (
-        <section className="relative py-20 px-4 bg-gradient-to-br from-primary to-secondary overflow-hidden text-white">
-            {/* Background Decorations (optional) */}
-            <div className="absolute inset-0 bg-[url('/images/bg-pattern.svg')] bg-cover opacity-10 pointer-events-none"></div>
+        <section className="relative py-20 px-4 bg-primary overflow-hidden text-white">
+            {/* Background Decorations */}
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553073520-80b5ad5ec870?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover opacity-10 pointer-events-none"></div>
 
-            <div className="max-w-5xl mx-auto text-center backdrop-blur-md bg-white/10 p-10 rounded-3xl border border-white/20 shadow-2xl">
+            <div className="max-w-5xl mx-auto text-center backdrop-blur-sm bg-white/10 p-10 rounded-3xl border border-white/20 shadow-2xl">
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +35,7 @@ const JoinCommunityCTA = () => {
                         "Get notified when someone recommends",
                     ].map((text, idx) => (
                         <p key={idx} className="flex items-center justify-center gap-2">
-                            <FaCheckCircle className="text-green-300" /> {text}
+                            <FaCheckCircle className="text-[#A1F1E7]" /> {text}
                         </p>
                     ))}
                 </div>
@@ -47,8 +45,8 @@ const JoinCommunityCTA = () => {
                     whileTap={{ scale: 0.95 }}
                 >
                     <Link
-                        href="/register"
-                        className="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
+                        to="/register"
+                        className="inline-block bg-white text-[#209187] font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
                     >
                         Sign Up Today
                     </Link>

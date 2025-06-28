@@ -58,7 +58,7 @@ const Navbar = () => {
         }
     </>
     return (
-        <div className="navbar shadow-sm">
+        <div className="navbar bg-primary shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,27 +66,27 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-primary  rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
 
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-xl">AltPick</Link>
+                <Link to='/' className="btn text-white btn-ghost text-xl">AltPick</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 ">
                     {links}
                 </ul>
             </div>
             <div className="navbar-end flex gap-3">
                 {
                     user ? <>
-                        <button onClick={handleSignOut} className='btn btn-accent'>Sign Out</button>
+                        <button onClick={handleSignOut} className='btn'>Sign Out</button>
                         <img title={user.displayName} className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
                     </> :
                         <>
-                            <Link to="/login" className='btn btn-primary'>Sign In</Link>
-                            <Link to='/register' className='btn btn-primary btn-outline'>Register</Link>
+                            <Link to='/register' className='btn btn-outline'>Register</Link>
+                            <Link to="/login" className='btn'>Sign In</Link>
                         </>
                 }
             </div>

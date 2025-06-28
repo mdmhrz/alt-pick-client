@@ -14,6 +14,7 @@ const MyRecommendationsList = ({ rec, handleDelete }) => {
             </td>
             <td className="text-center">
                 <button
+                    title='Delete'
                     onClick={() => handleDelete(rec)}
                     className="btn btn-sm btn-error text-white"
                 >

@@ -58,8 +58,8 @@ const Banner = () => {
                         />
                         <div className="absolute inset-0 flex items-center z-20">
                             <div className="w-11/12 mx-auto px-6">
-                                <div className="max-w-[50%]">
-                                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                <div className="lg:max-w-[70%]">
+                                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
                                         {slide.title}
                                     </h1>
                                     <p className="text-xl text-white mb-8">{slide.description}</p>
