@@ -1,13 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import queriesAnim from '../../assets/queries.json'
 import Lottie from "lottie-react";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import { useEffect } from "react";
+import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const MyQueries = ({ queries = [] }) => {
-    const [userQueries, setUserQueries] = useState(
-        queries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-    );
+const MyQueries = () => {
+    const { user } = useAuth();
+    const [userQueries, setUserQueries] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3000/queries/userEmail/${user.email}`)
+            .then((res) => {
+                console.log(res.data);
+                const sorted = res.data.sort(
+                    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+                );
+                setUserQueries(sorted);
+            });
+    }, [])
+
+
+
+
+
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -22,17 +44,16 @@ const MyQueries = ({ queries = [] }) => {
             color: "#fff",
         }).then((result) => {
             if (result.isConfirmed) {
-                setUserQueries(userQueries.filter((query) => query.id !== id));
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your query has been deleted.",
-                    icon: "success",
-                    background: "#1A1A1A",
-                    color: "#fff",
+                axios.delete(`http://localhost:3000/queries/${id}`).then((res) => {
+                    if (res.data.deletedCount) {
+                        toast.success("Your query has been deleted.");
+                        setUserQueries(userQueries.filter((query) => query._id !== id));
+                    }
                 });
             }
         });
     };
+
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
@@ -74,31 +95,58 @@ const MyQueries = ({ queries = [] }) => {
                     {/* 📋 Query Cards */}
                     <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                         {userQueries.map((query) => (
-                            <div
-                                key={query.id}
-                                className="bg-base-200 p-5 rounded-lg shadow-md border border-base-300"
-                            >
-                                <h3 className="text-xl font-semibold text-secondary mb-2">{query.title}</h3>
-                                <p className="text-sm text-gray-400 mb-3">{query.description}</p>
-                                <p className="text-xs text-gray-500 mb-4">
-                                    Posted on:{" "}
-                                    {new Date(query.timestamp).toLocaleString("en-GB", {
-                                        dateStyle: "medium",
-                                        timeStyle: "short",
-                                    })}
-                                </p>
-                                <div className="flex justify-between items-center gap-2">
-                                    <Link to={`/query/${query.id}`}>
-                                        <button className="btn btn-sm btn-outline btn-accent">View Details</button>
-                                    </Link>
-                                    <Link to={`/update-query/${query.id}`}>
-                                        <button className="btn btn-sm btn-outline btn-info">Update</button>
-                                    </Link>
+                            <div key={query._id} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                                {/* Top Section */}
+                                <div className="flex items-center gap-3 mb-4">
+                                    <img
+                                        src={query.userImage}
+                                        alt={query.name}
+                                        className="w-10 h-10 rounded-full object-cover border"
+                                    />
+                                    <div>
+                                        <h2 className="text-md font-semibold">{query.name}</h2>
+                                        <p className="text-sm text-gray-400">{query.userEmail}</p>
+                                    </div>
+                                </div>
+
+                                {/* Product Info */}
+                                <div className="flex gap-4">
+                                    <img
+                                        src={query.productImageUrl}
+                                        alt={query.productName}
+                                        className="w-28 h-28 object-cover rounded-lg border"
+                                    />
+                                    <div className="flex-1 space-y-2">
+                                        <h3 className="text-lg font-bold text-primary">{query.queryTitle}</h3>
+                                        <p className="text-sm text-gray-500">
+                                            <span className="font-medium">Product:</span> {query.productName} by {query.productBrand}
+                                        </p>
+                                        <p className="text-sm text-gray-600">{query.reason}</p>
+                                        <p className="text-xs text-gray-400">
+                                            <span className="font-semibold">Recommendations:</span> {query.recommendationCount}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="mt-4 flex gap-2">
                                     <button
-                                        onClick={() => handleDelete(query.id)}
-                                        className="btn btn-sm btn-outline btn-error"
+                                        onClick={() => navigate(`/query-details/${query._id}`)}
+                                        className="btn btn-sm btn-primary flex items-center gap-1"
                                     >
-                                        Delete
+                                        <FaEye /> View Details
+                                    </button>
+                                    <button
+                                        onClick={() => navigate(`/update-query/${query._id}`)}
+                                        className="btn btn-sm btn-secondary flex items-center gap-1"
+                                    >
+                                        <FaEdit /> Update
+                                    </button>
+                                    <button
+                                        onClick={() => handleDelete(query._id)}
+                                        className="btn btn-sm btn-error flex items-center gap-1"
+                                    >
+                                        <FaTrash /> Delete
                                     </button>
                                 </div>
                             </div>
