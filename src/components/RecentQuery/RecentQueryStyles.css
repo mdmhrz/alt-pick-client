@@ -8,3 +8,10 @@
     transform: scale(1);
     opacity: 1;
 }
+
+.recent-query-swiper .swiper-pagination {
+    margin-top: 20px;
+    /* or adjust as needed */
+    position: relative;
+    /* move it down */
+}
