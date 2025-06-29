@@ -71,8 +71,8 @@ const Banner = () => {
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6 }}
-
                                             whileHover={{ scale: 1.01 }}
+
                                             className="relative px-6 py-2 rounded-lg bg-black cursor-pointer text-white font-semibold overflow-hidden border border-transparent"
                                         >
                                             <span className="relative z-10">Explore Queries</span>

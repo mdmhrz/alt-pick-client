@@ -9,6 +9,11 @@
 **AltPick** is a sleek and responsive web application where users can post product-related queries and receive personalized recommendations from the community. It features a glowing UI experience, real-time interactions, authentication, and beautiful animations — all crafted using modern frontend technologies.
 
 ---
+## Live URL
+https://alt-pick-client.web.app/
+
+---
+
 
 ## ⚙️ Features
 
@@ -52,9 +57,12 @@ pnpm install
 # Run development server
 pnpm dev
 
+```
 
 
-💡 Folder Structure
+## 💡 Folder Structure
+
+```
 src/
 │
 ├── assets/              # Images, animations and icons
@@ -65,3 +73,7 @@ src/
 ├── App.jsx              # Main app file
 ├── index.css            # Tailwind + custom styles
 └── main.jsx             # Entry point
+```
+
+## 🙌 Contributing
+Feel free to fork the repo, suggest features, or open issues. Every contribution makes AltPick better. 💙

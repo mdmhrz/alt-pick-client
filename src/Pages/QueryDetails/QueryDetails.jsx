@@ -194,7 +194,7 @@ const QueryDetails = () => {
                             initial={{ opacity: 0, x: 30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="bg-base-100 border border-base-200 rounded-xl p-6 shadow max-h-[90vh] overflow-y-auto"
+                            className="bg-base-100 border border-base-200 rounded-xl p-6 shadow lg:max-h-[90vh] overflow-y-auto"
                         >
                             <h4 className="text-xl font-bold text-secondary mb-4">
                                 Recommendations ({recommendations.length})

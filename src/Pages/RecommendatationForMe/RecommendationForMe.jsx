@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Loading from "../../components/Loading/Loading";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const RecommendationsForMe = () => {
     const { user } = useAuth();
@@ -33,19 +34,37 @@ const RecommendationsForMe = () => {
             <Helmet>
                 <title>Recommendation For Me | AltPick</title>
             </Helmet>
-            <div className="max-w-6xl mx-auto p-6">
-                <h2 className="text-3xl font-extrabold text-primary mb-6 text-center">
+            <div className="max-w-6xl mx-auto p-6 mt-20">
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="text-3xl font-extrabold text-primary mb-6 text-center"
+                >
                     Recommendations You Received
-                </h2>
+                </motion.h2>
 
                 {recommendations.length === 0 ? (
-                    <div className="text-center text-gray-400 py-16 bg-base-100 rounded-xl shadow-inner">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        className="text-center text-gray-400 py-16 bg-base-100 rounded-xl shadow-inner"
+                    >
                         <p className="text-lg">No recommendations yet on your queries.</p>
                         <p className="text-sm mt-2">Once others start recommending products, you’ll see them here.</p>
-                    </div>
+                    </motion.div>
                 ) : (
-                    <div className="overflow-x-auto bg-base-100 rounded-2xl shadow-lg border border-base-300">
-                        <table className="table w-full min-w-4xl overflow-x-auto text-sm">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="overflow-x-auto bg-base-100 rounded-xl shadow-xl border border-base-300"
+                    >
+                        <table className="table w-full text-sm min-w-[900px]">
                             <thead className="bg-base-300 text-base-content uppercase text-xs tracking-wider">
                                 <tr>
                                     <th className="p-4">Recommender</th>
@@ -57,8 +76,15 @@ const RecommendationsForMe = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {recommendations.map((rec) => (
-                                    <tr key={rec._id} className="hover:bg-base-200 transition">
+                                {recommendations.map((rec, index) => (
+                                    <motion.tr
+                                        key={rec._id}
+                                        className="hover:bg-base-200/60 transition-all duration-300 border-b border-base-300"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.05 }}
+                                        viewport={{ once: true }}
+                                    >
                                         <td className="p-4">
                                             <div className="flex items-center gap-3">
                                                 {rec.recommenderImage ? (
@@ -76,33 +102,24 @@ const RecommendationsForMe = () => {
                                             </div>
                                         </td>
 
-                                        <td className="p-4 text-base font-medium text-base-content">
-                                            {rec.queryTitle}
-                                        </td>
-
+                                        <td className="p-4 font-medium text-base-content">{rec.queryTitle}</td>
                                         <td className="p-4 text-base-content">{rec.title}</td>
-
-                                        <td className="p-4 flex items-center gap-2 text-base-content">
-                                            {rec.product}
-                                        </td>
+                                        <td className="p-4 text-base-content">{rec.product}</td>
 
                                         <td className="p-4 text-gray-500 text-sm max-w-xs">
-                                            {rec.reason.length > 80
-                                                ? rec.reason.slice(0, 80) + '...'
-                                                : rec.reason}
+                                            <div title={rec.reason}>
+                                                {rec.reason.length > 80 ? rec.reason.slice(0, 80) + '...' : rec.reason}
+                                            </div>
                                         </td>
 
                                         <td className="p-4 text-xs text-gray-400">
-                                            <div className="flex items-center gap-1">
-
-                                                {new Date(rec.timestamp).toLocaleDateString()}
-                                            </div>
+                                            {new Date(rec.timestamp).toLocaleDateString()}
                                         </td>
-                                    </tr>
+                                    </motion.tr>
                                 ))}
                             </tbody>
                         </table>
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </>

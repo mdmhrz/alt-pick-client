@@ -1,69 +1,81 @@
 import React from 'react';
 import { FaLeaf, FaLightbulb, FaShieldAlt, FaUser } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: i * 0.2,
+            duration: 0.6,
+            ease: 'easeOut',
+        },
+    }),
+};
 
 const WhyChooseUs = () => {
     return (
         <section className="py-16 w-11/12 mx-auto">
-            <div className="px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl text-secondary font-bold mb-4">
-                        Why Choose Our Platform
-                    </h2>
-                    <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                        Join thousands of conscious consumers making better choices every
-                        day
-                    </p>
-                </div>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center mb-16 px-6"
+            >
+                <h2 className="text-3xl text-secondary font-bold mb-4">
+                    Why Choose Our Platform
+                </h2>
+                <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                    Join thousands of conscious consumers making better choices every day
+                </p>
+            </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2">
-                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <FaUser className="fas fa-users text-white text-2xl"></FaUser>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6">
+                {[ // data-based rendering for simplicity and scalability
+                    {
+                        icon: <FaUser className="text-white text-2xl" />,
+                        title: "Community Driven",
+                        color: "bg-blue-600",
+                        text: "Powered by real experiences from thousands of users like you"
+                    },
+                    {
+                        icon: <FaLeaf className="text-white text-2xl" />,
+                        title: "Ethical Choices",
+                        color: "bg-green-600",
+                        text: "Find products that align with your values and ethical standards"
+                    },
+                    {
+                        icon: <FaLightbulb className="text-white text-2xl" />,
+                        title: "Informed Decisions",
+                        color: "bg-purple-600",
+                        text: "Access detailed information to make better purchasing choices"
+                    },
+                    {
+                        icon: <FaShieldAlt className="text-white text-2xl" />,
+                        title: "Consumer Power",
+                        color: "bg-amber-600",
+                        text: "Make your voice heard and influence corporate practices"
+                    }
+                ].map((item, index) => (
+                    <motion.div
+                        key={index}
+                        className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2 shadow-md"
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        custom={index}
+                        viewport={{ once: true }}
+                    >
+                        <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                            {item.icon}
                         </div>
-                        <h3 className="text-xl font-bold mb-2">
-                            Community Driven
-                        </h3>
-                        <p className="text-gray-600">
-                            Powered by real experiences from thousands of users like you
-                        </p>
-                    </div>
-
-                    <div className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2">
-                        <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <FaLeaf className="fas fa-leaf text-white text-2xl"></FaLeaf>
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">
-                            Ethical Choices
-                        </h3>
-                        <p className="text-gray-600">
-                            Find products that align with your values and ethical standards
-                        </p>
-                    </div>
-
-                    <div className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2">
-                        <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <FaLightbulb className="text-white text-2xl"></FaLightbulb>
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">
-                            Informed Decisions
-                        </h3>
-                        <p className="text-gray-600">
-                            Access detailed information to make better purchasing choices
-                        </p>
-                    </div>
-
-                    <div className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2">
-                        <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <FaShieldAlt className="text-white text-2xl" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">
-                            Consumer Power
-                        </h3>
-                        <p className="text-gray-600">
-                            Make your voice heard and influence corporate practices
-                        </p>
-                    </div>
-                </div>
+                        <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                        <p className="text-gray-600">{item.text}</p>
+                    </motion.div>
+                ))}
             </div>
         </section>
     );

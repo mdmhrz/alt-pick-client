@@ -11,6 +11,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "motion/react";
 import Loading from "../../components/Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import banner from '../../assets/query-banner.jpg'
 
 
 
@@ -115,11 +116,11 @@ const MyQueries = () => {
                         className="relative bg-cover bg-center rounded-xl shadow-md overflow-hidden mb-12"
                         style={{
                             backgroundImage:
-                                "url('https://thumbs.dreamstime.com/b/handwriting-text-any-questions-question-concept-meaning-you-say-write-order-to-ask-demonstrating-something-picture-photo-164080259.jpg')",
+                                `url(${banner})`,
                         }}
                     >
                         {/* Overlay */}
-                        <div className="absolute inset-0 bg-black/60 rounded-xl z-0"></div>
+                        <div className="absolute inset-0 bg-black/30 rounded-xl z-0"></div>
 
                         <div className="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between text-white">
                             <div className="mb-6 md:mb-0">

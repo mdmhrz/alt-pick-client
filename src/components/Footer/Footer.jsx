@@ -7,7 +7,7 @@ import logo from '../../assets/footer-logo.png'
 
 const Footer = () => {
     return (
-        <footer className="relative text-base-100 px-6 py-16 overflow-hidden">
+        <footer className="relative text-base-100 px-6 py-16 overflow-hidden mt-20">
             <div className='w-11/12 mx-auto'>
                 {/* Background image with 20% opacity */}
                 <div
