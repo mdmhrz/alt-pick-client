@@ -1,6 +1,9 @@
+import { MotionConfig } from 'motion/react';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router';
+import { motion } from "framer-motion";
 
 const Banner = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -63,12 +66,83 @@ const Banner = () => {
                                         {slide.title}
                                     </h1>
                                     <p className="text-xl text-white mb-8">{slide.description}</p>
-                                    <button
-                                        onClick={() => setCurrentView("queries")}
-                                        className="btn btn-primary"
-                                    >
-                                        Explore Queries
-                                    </button>
+                                    <Link to='/queries'>
+                                        <motion.button
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.6 }}
+
+                                            whileHover={{ scale: 1.01 }}
+                                            className="relative px-6 py-2 rounded-lg bg-black cursor-pointer text-white font-semibold overflow-hidden border border-transparent"
+                                        >
+                                            <span className="relative z-10">Explore Queries</span>
+
+                                            {/* Glowing Border Tracer */}
+                                            <span className="absolute inset-0 rounded-lg pointer-events-none z-0">
+                                                <span className="absolute inset-0 border border-white rounded-lg opacity-20"></span>
+                                                <motion.span
+                                                    className="absolute h-[1px] w-full bg-gradient-to-r from-green-400/80 via-purple-400/80 to-transparent"
+                                                    initial={{ left: "-25%" }}
+                                                    animate={{ left: "100%" }}
+                                                    transition={{
+                                                        repeat: Infinity,
+                                                        duration: 4,
+                                                        ease: "linear",
+                                                        delay: 12,
+                                                    }}
+                                                    style={{
+                                                        top: 0,
+                                                        borderRadius: "2px",
+                                                    }}
+                                                />
+                                                <motion.span
+                                                    className="absolute w-[1px] h-full bg-gradient-to-b from-green-400/80 via-purple-400/80 to-transparent"
+                                                    initial={{ top: "-25%" }}
+                                                    animate={{ top: "100%" }}
+                                                    transition={{
+                                                        repeat: Infinity,
+                                                        duration: 4,
+                                                        ease: "linear",
+                                                        delay: 4,
+                                                    }}
+                                                    style={{
+                                                        right: 0,
+                                                        borderRadius: "2px",
+                                                    }}
+                                                />
+                                                <motion.span
+                                                    className="absolute h-[1px] w-full bg-gradient-to-l from-green-400/80 via-purple-400/80 to-transparent"
+                                                    initial={{ right: "-25%" }}
+                                                    animate={{ right: "100%" }}
+                                                    transition={{
+                                                        repeat: Infinity,
+                                                        duration: 4,
+                                                        ease: "linear",
+                                                        delay: 8,
+                                                    }}
+                                                    style={{
+                                                        bottom: 0,
+                                                        borderRadius: "2px",
+                                                    }}
+                                                />
+                                                <motion.span
+                                                    className="absolute w-[1px] h-full bg-gradient-to-t from-green-400/80 via-purple-400/80 to-transparent"
+                                                    initial={{ bottom: "-25%" }}
+                                                    animate={{ bottom: "100%" }}
+                                                    transition={{
+                                                        repeat: Infinity,
+                                                        duration: 4,
+                                                        ease: "linear",
+                                                        delay: 12,
+                                                    }}
+                                                    style={{
+                                                        left: 0,
+                                                        borderRadius: "2px",
+                                                    }}
+                                                />
+                                            </span>
+                                        </motion.button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
