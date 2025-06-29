@@ -25,8 +25,6 @@ const AddQuery = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
-
         const fullQuery = {
             ...formData,
             userEmail: user.email,
@@ -36,11 +34,11 @@ const AddQuery = () => {
             recommendationCount: 0,
         };
 
-        console.log(fullQuery);
+        // console.log(fullQuery);
 
         axios.post('http://localhost:3000/queries', { ...fullQuery })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                     toast.success("Query added successfully!");
                     navigate("/myQueries");
@@ -53,98 +51,98 @@ const AddQuery = () => {
                 console.log(err);
             })
 
-        // try {
-        //     const res = await fetch("https://your-api-endpoint.com/queries", {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify(fullQuery),
-        //     });
-
-        //     const data = await res.json();
-        //     if (data.insertedId || res.ok) {
-        //         toast.success("Query added successfully!");
-        //         navigate("/myQueries");
-        //     } else {
-        //         throw new Error("Failed to add query.");
-        //     }
-        // } catch (error) {
-        //     toast.error(error.message || "Something went wrong.");
-        // }
     };
 
     return (
-        <div className="max-w-3xl mx-auto bg-base-200 p-8 rounded-xl shadow-md mt-8">
-            <h2 className="text-3xl font-bold text-primary mb-6 text-center">Add a New Product Query</h2>
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#319990] to-[#18cdbb] p-10 rounded-3xl shadow-2xl mt-12 border border-white/10 backdrop-blur-md text-white">
+            <div className="text-center mb-10">
+                <h2 className="text-4xl font-extrabold mb-3 drop-shadow-md">Submit a Product Query</h2>
+                <p className="text-white/80 text-sm">
+                    Share your concerns about a product and get community-driven alternatives.
+                </p>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Product Name */}
                 <div>
-                    <label className="label font-semibold">Product Name</label>
+                    <label className="label font-medium text-sm text-white/90">Product Name</label>
                     <input
                         type="text"
                         name="productName"
-                        className="input input-bordered w-full"
+                        placeholder="Enter product name"
+                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
                         required
                         value={formData.productName}
                         onChange={handleChange}
                     />
                 </div>
 
+                {/* Product Brand */}
                 <div>
-                    <label className="label font-semibold">Product Brand</label>
+                    <label className="label font-medium text-sm text-white/90">Product Brand</label>
                     <input
                         type="text"
                         name="productBrand"
-                        className="input input-bordered w-full"
+                        placeholder="Enter brand name"
+                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
                         required
                         value={formData.productBrand}
                         onChange={handleChange}
                     />
                 </div>
 
+                {/* Product Image URL */}
                 <div>
-                    <label className="label font-semibold">Product Image URL</label>
+                    <label className="label font-medium text-sm text-white/90">Product Image URL</label>
                     <input
                         type="url"
                         name="productImageUrl"
-                        className="input input-bordered w-full"
+                        placeholder="Enter image URL"
+                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
                         required
                         value={formData.productImageUrl}
                         onChange={handleChange}
                     />
                 </div>
 
+                {/* Query Title */}
                 <div>
-                    <label className="label font-semibold">Query Title</label>
+                    <label className="label font-medium text-sm text-white/90">Query Title</label>
                     <input
                         type="text"
                         name="queryTitle"
-                        className="input input-bordered w-full"
+                        placeholder="e.g. Is there any better alternative with the same quality?"
+                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
                         required
-                        placeholder="e.g. Is there any better product that gives me the same quality?"
                         value={formData.queryTitle}
                         onChange={handleChange}
                     />
                 </div>
 
+                {/* Reason */}
                 <div>
-                    <label className="label font-semibold">Boycotting Reason Details</label>
+                    <label className="label font-medium text-sm text-white/90">Boycotting Reason Details</label>
                     <textarea
                         name="reason"
-                        rows="4"
-                        className="textarea textarea-bordered w-full"
+                        rows="5"
+                        placeholder="Explain your reason in detail..."
+                        className="textarea textarea-bordered w-full bg-white text-black placeholder-gray-500"
                         required
                         value={formData.reason}
                         onChange={handleChange}
-                    />
+                    ></textarea>
                 </div>
 
-                <div className="text-center">
-                    <button type="submit" className="btn btn-primary mt-4">
+                {/* Submit Button */}
+                <div className="text-center pt-4">
+                    <button type="submit" className="btn bg-white text-[#209187] hover:bg-gray-100 font-bold px-8 py-2 text-base rounded-full shadow-lg">
                         Add Query
                     </button>
                 </div>
             </form>
         </div>
+
+
     );
 };
 

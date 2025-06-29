@@ -4,51 +4,44 @@ import { toast } from "react-toastify";
 import Loading from "../../components/Loading/Loading";
 import MyRecommendationsList from "./MyRecommendationsList";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const MyRecommendations = () => {
     const { user } = useAuth();
     const [myRecommendations, setMyRecommendations] = useState([]);
     const [loading, setLoading] = useState(true);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/recommendations/recommenderEmail/${user.email}`, {
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`,
-                }
-            })
-                .then(res => res.json())
-                .then(data => setMyRecommendations(data))
+            axiosSecure.get(`http://localhost:3000/recommendations/recommenderEmail/${user.email}`)
+                .then(res => setMyRecommendations(res.data))
                 .catch(() => toast.error("Failed to load your recommendations"))
                 .finally(() => setLoading(false));
         }
-
-
     }, [user?.email]);
 
     const handleDelete = async (rec) => {
-        const confirm = window.confirm("Are you sure you want to delete this recommendation?");
-        if (!confirm) return;
-
-        try {
-            const res = await fetch(`http://localhost:3000/recommendations/${rec._id}`, {
-                method: "DELETE",
-            });
-
-            if (res.ok) {
-                // Decrement recommendation count in associated query
-                await fetch(`http://localhost:3000/queries/decrement/${rec.queryId}`, {
-                    method: "PATCH",
-                });
-
-                setMyRecommendations(prev => prev.filter(item => item._id !== rec._id));
-                toast.success("Recommendation deleted successfully");
-            } else {
-                toast.error("Failed to delete recommendation");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#209187",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/recommendations/${rec._id}`)
+                    .then((res) => {
+                        if (res.data.deletedCount) {
+                            toast.success("Your recommendation has been deleted.");
+                            setMyRecommendations(prev => prev.filter(item => item._id !== rec._id));
+                        }
+                    });
             }
-        } catch (error) {
-            toast.error("An error occurred while deleting");
-        }
+        });
     };
 
     if (loading) {
