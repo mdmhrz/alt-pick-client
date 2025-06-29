@@ -3,8 +3,8 @@ import { FaLeaf, FaLightbulb, FaShieldAlt, FaUser } from 'react-icons/fa';
 
 const WhyChooseUs = () => {
     return (
-        <section className="py-16">
-            <div className="container mx-auto px-6">
+        <section className="py-16 w-11/12 mx-auto">
+            <div className="px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl text-secondary font-bold mb-4">
                         Why Choose Our Platform
