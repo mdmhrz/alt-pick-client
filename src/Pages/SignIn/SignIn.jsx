@@ -94,14 +94,14 @@ const SignIn = () => {
                 <title>Sign In | AltPick</title>
             </Helmet>
 
-            <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-base-300 px-4">
+            <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-base-300 px-4 py-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="flex items-center justify-center">
-                        <Lottie animationData={loginPageAnim} className="w-80"></Lottie>
+                        <Lottie animationData={loginPageAnim} className="w-60 md:w-80"></Lottie>
                     </div>
                     <div className="">
                         <motion.div
-                            className="min-w-[400px] p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
+                            className="w-full md:min-w-[350px] lg:min-w-[400px] p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.4 }}

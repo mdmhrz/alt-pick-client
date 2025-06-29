@@ -1,12 +1,67 @@
-# React + Vite
+# 🌟 AltPick
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 🚀 *A modern product query & recommendation platform built with React, Tailwind CSS, and Firebase.*
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📝 Description
 
-## Expanding the ESLint configuration
+**AltPick** is a sleek and responsive web application where users can post product-related queries and receive personalized recommendations from the community. It features a glowing UI experience, real-time interactions, authentication, and beautiful animations — all crafted using modern frontend technologies.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Features
+
+- 🔐 **Firebase Authentication** for secure login
+- 📦 **Dynamic Recommendations** system
+- 🎨 **Tailwind CSS** for fast and scalable styling
+- 🔄 **Framer Motion & Motion** for smooth animations
+- 📡 **Axios with Interceptors** for secure API calls
+- 🌐 **React Router v7** for SPA navigation
+- 🧠 **React Helmet** for SEO enhancement
+- 📱 **Fully responsive layout** using Swiper.js
+- 🔥 **Lottie Animations** for engaging UI moments
+- 💬 **SweetAlert2 + React Toastify** for friendly notifications
+
+---
+
+## 📦 Tech Stack
+
+| Tool / Library         | Purpose                             |
+|------------------------|-------------------------------------|
+| ⚛️ `React 19`          | Frontend Framework                  |
+| 🎨 `Tailwind CSS 4`     | Utility-first CSS Framework         |
+| 🔥 `Firebase`          | Auth & Backend Services             |
+| 🌍 `React Router v7`   | Routing                             |
+| 💬 `React Toastify`    | Notifications                       |
+| 💥 `Framer Motion`     | Animations                          |
+| 🌀 `Lottie React`      | JSON-based animations               |
+| 📦 `Axios`             | API communication                   |
+| 🧠 `React Helmet Async`| SEO & Head management               |
+| 🧊 `Swiper.js`         | Carousel / Slider                   |
+| 🎉 `SweetAlert2`       | Alert modals                        |
+
+---
+
+## 🚧 Installation
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run development server
+pnpm dev
+
+
+
+💡 Folder Structure
+src/
+│
+├── assets/              # Images, animations and icons
+├── components/          # Reusable components
+├── pages/               # Page-level components
+├── hooks/               # Custom hooks (e.g., useAxiosSecure)
+├── routes/              # App routing
+├── App.jsx              # Main app file
+├── index.css            # Tailwind + custom styles
+└── main.jsx             # Entry point

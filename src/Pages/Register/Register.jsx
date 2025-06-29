@@ -117,11 +117,11 @@ const Register = () => {
             <div className="min-h-[calc(100vh-64px)] bg-base-300 py-10 flex items-center justify-center px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="flex items-center justify-center">
-                        <Lottie animationData={registerAnim} className="w-80"></Lottie>
+                        <Lottie animationData={registerAnim} className="w-60 md:w-80"></Lottie>
                     </div>
                     <div>
                         <motion.div
-                            className="w-full min-w-[400px] max-w-sm p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
+                            className="w-full md:min-w-[350px] lg:min-w-[400px] max-w-sm p-8 rounded-xl shadow-2xl bg-base-100 border border-base-300"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
