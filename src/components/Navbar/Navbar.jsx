@@ -19,8 +19,8 @@ const Navbar = () => {
             text: 'Your account will be signed out',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#422ad5',
-            cancelButtonColor: 'red',
+            confirmButtonColor: "#209187",
+            cancelButtonColor: "#d33",
             confirmButtonText: 'Yes, Sign Out',
         }).then((result) => {
             if (result.isConfirmed) {
@@ -48,7 +48,7 @@ const Navbar = () => {
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/quaries'>Quaries</NavLink></li>
+        <li><NavLink to='/queries'>Queries</NavLink></li>
         {
             user && <>
                 <li><NavLink to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
@@ -82,7 +82,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <button onClick={handleSignOut} className='btn'>Sign Out</button>
-                        <img title={user.displayName} className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
+                        <img title={user.displayName} className='w-10 h-10 border-base-100 border rounded-full' src={user.photoURL} alt="" />
                     </> :
                         <>
                             <Link to='/register' className='btn btn-outline'>Register</Link>

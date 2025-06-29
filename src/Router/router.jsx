@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
 import HomeLayout from "../Layouts/HomeLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import Quaries from "../Pages/Quaries/Quaries";
 import SignIn from "../Pages/SignIn/SignIn";
 import Register from "../Pages/Register/Register";
 import RecommendationForMe from "../Pages/RecommendatationForMe/RecommendationForMe";
@@ -11,6 +10,7 @@ import MyRecommendations from "../Pages/MyRecommendations/MyRecommendations";
 import AddQuery from "../Pages/AddQuery/AddQuery";
 import MyQueries from "../Pages/MyQuaries/MyQuaries";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
+import Queries from "../Pages/Queries/Queries";
 
 
 
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
                 Component: HomeLayout,
             },
             {
-                path: '/quaries',
-                Component: Quaries
+                path: '/queries',
+                Component: Queries
             },
             {
                 path: '/login',

@@ -13,7 +13,7 @@ const RecommendationsForMe = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axioSecure.get(`http://localhost:3000/recommendations/creatorEmail/${user.email}`)
+            axioSecure.get(`/recommendations/creatorEmail/${user.email}`)
                 .then((res) => setRecommendations(res.data))
                 .catch(() => toast.error("Failed to load recommendations"))
                 .finally(() => setLoading(false));

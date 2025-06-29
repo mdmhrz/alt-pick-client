@@ -7,7 +7,7 @@ const JoinCommunityCTA = () => {
     return (
         <section className="relative py-20 px-4 bg-primary overflow-hidden text-white">
             {/* Background Decorations */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553073520-80b5ad5ec870?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover opacity-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[url('https://25913880.fs1.hubspotusercontent-eu1.net/hub/25913880/hubfs/blog_workplace.png?width=900&name=blog_workplace.png')] bg-cover opacity-10 pointer-events-none"></div>
 
             <div className="max-w-5xl mx-auto text-center backdrop-blur-sm bg-white/10 p-10 rounded-3xl border border-white/20 shadow-2xl">
                 <motion.h2

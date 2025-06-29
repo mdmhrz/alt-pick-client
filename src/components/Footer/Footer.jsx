@@ -1,6 +1,8 @@
 import React from 'react';
 import footerAnim from '../../assets/footer.json'
 import Lottie from 'lottie-react';
+import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const Footer = () => {
     return (
@@ -25,7 +27,7 @@ const Footer = () => {
 
 
             {/* Content overlay */}
-            <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 z-10">
+            <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 z-20">
                 {/* Brand Info */}
                 <div>
                     <h2 className="text-2xl font-bold text-[#209187]">AltPick</h2>
@@ -33,21 +35,20 @@ const Footer = () => {
                         Empowering smart product decisions through community-driven recommendations.
                     </p>
                     <div className="mt-4 flex gap-4 text-lg text-gray-400">
-                        <a href="#" className="hover:text-[#209187] transition"><i className="fa-brands fa-facebook"></i></a>
-                        <a href="#" className="hover:text-[#209187] transition"><i className="fa-brands fa-twitter"></i></a>
-                        <a href="#" className="hover:text-[#209187] transition"><i className="fa-brands fa-linkedin"></i></a>
-                        <a href="#" className="hover:text-[#209187] transition"><i className="fa-brands fa-github"></i></a>
+                        <a href="https://www.facebook.com/mdmhrz/" target='blank_' className="hover:text-[#209187] transition"><FaFacebook className="fa-brands fa-linkedin"></FaFacebook></a>
+                        <a href="https://www.linkedin.com/in/mdmhrz/" target="blank_" className="hover:text-[#209187] transition"><FaLinkedin className="fa-brands fa-linkedin"></FaLinkedin></a>
+                        <a href="https://github.com/mdmhrz" target='blank_' className="hover:text-[#209187] transition"><FaGithub className="fa-brands fa-github"></FaGithub></a>
                     </div>
                 </div>
 
                 {/* Navigation */}
                 <div>
-                    <h3 className="font-semibold mb-4 text-white">Explore</h3>
+                    <h3 className="font-semibold mb-4">Explore</h3>
                     <ul className="space-y-2 text-sm text-gray-300">
-                        <li><a href="/" className="hover:text-[#209187]">Home</a></li>
-                        <li><a href="/about" className="hover:text-[#209187]">About</a></li>
-                        <li><a href="/queries" className="hover:text-[#209187]">Queries</a></li>
-                        <li><a href="/recommendations" className="hover:text-[#209187]">Recommendations</a></li>
+                        <li><Link to='/' className="hover:text-primary">Home</Link></li>
+                        <li><Link to="/queries" className="hover:text-[#209187]">Queries</Link></li>
+                        <li><Link to="/recommendationsForMe" className="hover:text-[#209187]">Recommendation For Me</Link></li>
+                        <li><Link to="/myRecommendations" className="hover:text-[#209187]">My Recommendations</Link></li>
                     </ul>
                 </div>
 
