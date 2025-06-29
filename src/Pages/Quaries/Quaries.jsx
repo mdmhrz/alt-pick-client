@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaThLarge, FaTh, FaList, FaRegThumbsUp } from "react-icons/fa";
+import { FaThLarge, FaTh, FaList, FaRegThumbsUp, FaSearch } from "react-icons/fa";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 
@@ -41,55 +41,77 @@ const Queries = () => {
     return (
         <div className=" bg-base-300">
             <div className="w-11/12 max-w-7xl mx-auto px-4 py-20">
-                {/* Header & Controls */}
 
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-primary">
-                        Discover Every Product Concern Shared by Real Users
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                >
+                    <h2 className="text-4xl font-extrabold text-primary mb-3">
+                        Discover Real Product Concerns
                     </h2>
-                    <p className="text-gray-500 text-sm mt-2 max-w-2xl mx-auto">
-                        Browse a growing list of product-related questions, posted by our community. See what's trending, explore user challenges, and find valuable recommendations.
+                    <p className="text-gray-500 max-w-2xl mx-auto text-sm">
+                        Explore what others are saying about their product experiences and make better choices based on real feedback and community-driven recommendations.
                     </p>
-                </div>
+                </motion.div>
 
+                {/* Controls */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+                    {/* Total Count */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-sm text-gray-500"
+                    >
+                        Total Queries:{" "}
+                        <span className="font-semibold text-primary">{filteredQueries.length}</span>
+                    </motion.div>
 
-                {/* Layout Toggle */}
+                    {/* Search Input */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="relative w-full md:max-w-xl"
+                    >
+                        <input
+                            type="text"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            placeholder="Search by product name..."
+                            className="input input-bordered w-full pl-10 pr-4 py-2 rounded-full text-sm"
+                        />
+                        <FaSearch className="absolute top-2.5 left-3 text-gray-400 text-lg" />
+                    </motion.div>
 
-                <div className="flex justify-between gap-2 mb-6">
-                    {/* 🔍 Search Input */}
-                    <input
-                        type="text"
-                        placeholder="Search by product name..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="input input-bordered w-full md:max-w-xl text-sm"
-                    />
-                    <div className="flex gap-2 items-center justify-center">
+                    {/* Layout Toggle */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex gap-2 items-center"
+                    >
                         <span className="text-sm font-medium text-gray-600">Layout:</span>
-                        <button
-                            onClick={() => setColumns(1)}
-                            className={`p-2 rounded-md border transition ${columns === 1 ? "bg-primary text-white border-primary" : "bg-base-200 text-gray-600 hover:bg-base-300"}`}
-                            title="List View"
-                        >
-                            <FaList />
-                        </button>
-                        <button
-                            onClick={() => setColumns(2)}
-                            className={`p-2 rounded-md border transition ${columns === 2 ? "bg-primary text-white border-primary" : "bg-base-200 text-gray-600 hover:bg-base-300"}`}
-                            title="2 Column Grid"
-                        >
-                            <FaThLarge />
-                        </button>
-                        <button
-                            onClick={() => setColumns(3)}
-                            className={`p-2 rounded-md border transition ${columns === 3 ? "bg-primary text-white border-primary" : "bg-base-200 text-gray-600 hover:bg-base-300"}`}
-                            title="3 Column Grid"
-                        >
-                            <FaTh />
-                        </button>
-                    </div>
-
-
+                        {[1, 2, 3].map((col) => {
+                            const Icon = col === 1 ? FaList : col === 2 ? FaThLarge : FaTh;
+                            return (
+                                <button
+                                    key={col}
+                                    onClick={() => setColumns(col)}
+                                    className={`p-2 rounded-md border transition ${columns === col
+                                        ? "bg-primary text-white border-primary"
+                                        : "bg-base-200 text-gray-600 hover:bg-base-300"
+                                        }`}
+                                    title={`${col}-Column View`}
+                                >
+                                    <Icon />
+                                </button>
+                            );
+                        })}
+                    </motion.div>
                 </div>
 
                 {/* Query Cards */}
@@ -104,24 +126,27 @@ const Queries = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 viewport={{ once: true }}
-                                className="bg-white p-5 rounded-2xl border border-base-300 shadow hover:shadow-xl transition duration-300 flex flex-col justify-between"
+                                className="bg-base-100 p-6 rounded-2xl border border-base-300 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between"
                             >
+                                {/* Header */}
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
-                                        <h3 className="text-lg font-bold text-secondary">{query.queryTitle}</h3>
+                                        <h3 className="text-lg font-bold text-secondary mb-1">
+                                            {query.queryTitle}
+                                        </h3>
                                         <p className="text-sm text-gray-500">
                                             <span className="font-medium">Product:</span>{" "}
                                             {query.productName} by {query.productBrand}
                                         </p>
                                     </div>
 
-                                    <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-600 font-medium text-sm rounded-full">
+                                    <div className="flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary font-medium text-sm rounded-full">
                                         <FaRegThumbsUp className="text-base" />
                                         <span>{query.recommendationCount}</span>
                                     </div>
                                 </div>
 
-                                {/* Conditionally hide image on large + 1-column layout */}
+                                {/* Image */}
                                 {!(columns === 1 && window.innerWidth >= 1024) && (
                                     <div className="h-48 rounded-xl overflow-hidden mb-4 border border-base-200">
                                         <img
@@ -132,6 +157,7 @@ const Queries = () => {
                                     </div>
                                 )}
 
+                                {/* Date */}
                                 <p className="text-xs text-gray-400 mb-4">
                                     Posted on:{" "}
                                     {new Date(query.timestamp).toLocaleDateString("en-GB", {
@@ -141,15 +167,45 @@ const Queries = () => {
                                     })}
                                 </p>
 
+                                {/* CTA */}
                                 <div className="text-end">
                                     <Link to={`/query-details/${query._id}`}>
-                                        <button className="btn btn-sm btn-primary rounded-full px-6">Recommend</button>
+                                        <button className="btn btn-sm btn-primary rounded-full px-6">
+                                            Recommend
+                                        </button>
                                     </Link>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 )}
+
+                {/* Static Related Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                    className="mt-24 text-center"
+                >
+                    <h3 className="text-2xl font-bold text-primary mb-4">Related Topics</h3>
+                    <div className="flex flex-wrap gap-3 justify-center text-sm text-white">
+                        {[
+                            "Tech Alternatives",
+                            "Eco-Friendly Products",
+                            "Community Picks",
+                            "User Reviews",
+                            "Top Queries",
+                            "Boycott Suggestions",
+                        ].map((topic, i) => (
+                            <span
+                                key={i}
+                                className="bg-primary/80 hover:bg-primary text-white px-4 py-1.5 rounded-full transition"
+                            >
+                                {topic}
+                            </span>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </div>
     );

@@ -54,10 +54,12 @@ const AddQuery = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#319990] to-[#18cdbb] p-10 rounded-3xl shadow-2xl mt-12 border border-white/10 backdrop-blur-md text-white">
+        <div className="max-w-3xl mx-auto bg-base-200 p-10 rounded-xl shadow-2xl mt-12 border border-base-300">
             <div className="text-center mb-10">
-                <h2 className="text-4xl font-extrabold mb-3 drop-shadow-md">Submit a Product Query</h2>
-                <p className="text-white/80 text-sm">
+                <h2 className="text-4xl font-extrabold text-primary mb-3">
+                    Submit a Product Query
+                </h2>
+                <p className="text-gray-400 text-sm">
                     Share your concerns about a product and get community-driven alternatives.
                 </p>
             </div>
@@ -65,12 +67,11 @@ const AddQuery = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Product Name */}
                 <div>
-                    <label className="label font-medium text-sm text-white/90">Product Name</label>
+                    <label className="label font-medium text-sm text-secondary">Product Name</label>
                     <input
                         type="text"
                         name="productName"
-                        placeholder="Enter product name"
-                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
+                        className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
                         required
                         value={formData.productName}
                         onChange={handleChange}
@@ -79,12 +80,11 @@ const AddQuery = () => {
 
                 {/* Product Brand */}
                 <div>
-                    <label className="label font-medium text-sm text-white/90">Product Brand</label>
+                    <label className="label font-medium text-sm text-secondary">Product Brand</label>
                     <input
                         type="text"
                         name="productBrand"
-                        placeholder="Enter brand name"
-                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
+                        className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
                         required
                         value={formData.productBrand}
                         onChange={handleChange}
@@ -93,12 +93,11 @@ const AddQuery = () => {
 
                 {/* Product Image URL */}
                 <div>
-                    <label className="label font-medium text-sm text-white/90">Product Image URL</label>
+                    <label className="label font-medium text-sm text-secondary">Product Image URL</label>
                     <input
                         type="url"
                         name="productImageUrl"
-                        placeholder="Enter image URL"
-                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
+                        className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
                         required
                         value={formData.productImageUrl}
                         onChange={handleChange}
@@ -107,13 +106,13 @@ const AddQuery = () => {
 
                 {/* Query Title */}
                 <div>
-                    <label className="label font-medium text-sm text-white/90">Query Title</label>
+                    <label className="label font-medium text-sm text-secondary">Query Title</label>
                     <input
                         type="text"
                         name="queryTitle"
-                        placeholder="e.g. Is there any better alternative with the same quality?"
-                        className="input input-bordered w-full bg-white text-black placeholder-gray-500"
+                        className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
                         required
+                        placeholder="e.g. Is there any better alternative with the same quality?"
                         value={formData.queryTitle}
                         onChange={handleChange}
                     />
@@ -121,13 +120,13 @@ const AddQuery = () => {
 
                 {/* Reason */}
                 <div>
-                    <label className="label font-medium text-sm text-white/90">Boycotting Reason Details</label>
+                    <label className="label font-medium text-sm text-secondary">Boycotting Reason Details</label>
                     <textarea
                         name="reason"
                         rows="5"
-                        placeholder="Explain your reason in detail..."
-                        className="textarea textarea-bordered w-full bg-white text-black placeholder-gray-500"
+                        className="textarea textarea-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
                         required
+                        placeholder="Explain your reason in detail..."
                         value={formData.reason}
                         onChange={handleChange}
                     ></textarea>
@@ -135,13 +134,12 @@ const AddQuery = () => {
 
                 {/* Submit Button */}
                 <div className="text-center pt-4">
-                    <button type="submit" className="btn bg-white text-[#209187] hover:bg-gray-100 font-bold px-8 py-2 text-base rounded-full shadow-lg">
+                    <button type="submit" className="btn btn-primary px-8 py-2 text-white text-base">
                         Add Query
                     </button>
                 </div>
             </form>
         </div>
-
 
     );
 };

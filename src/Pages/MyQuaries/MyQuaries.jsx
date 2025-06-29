@@ -8,6 +8,7 @@ import axios from "axios";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { motion } from "motion/react";
 
 const MyQueries = () => {
     const { user } = useAuth();
@@ -89,67 +90,140 @@ const MyQueries = () => {
 
     return (
         <div className="bg-base-300">
-            <div className="max-w-7xl mx-auto px-4 py-20 ">
-                <div className="bg-base-200 rounded-xl mb-8 shadow-md bg-cover bg-center"
+            <div className="max-w-7xl mx-auto px-4 py-20">
+                {/* Banner */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="bg-cover bg-center rounded-xl shadow-md overflow-hidden mb-12"
                     style={{
-                        backgroundImage: "url('https://thumbs.dreamstime.com/b/handwriting-text-any-questions-question-concept-meaning-you-say-write-order-to-ask-demonstrating-something-picture-photo-164080259.jpg')"
-                    }}>
-                    <div className="bg-secondary/80 p-8 rounded-xl flex items-center justify-between">
-                        <div>
-                            <h1 className="text-4xl font-bold text-white mb-2">Your Recent Product Queries</h1>
-                            <p className="text-gray-400 text-sm mb-4">Track, update, and manage your posted product-related questions here.</p>
-                            <Link to="/add-query"><button className="btn btn-primary">Add New Query</button></Link>
+                        backgroundImage:
+                            "url('https://thumbs.dreamstime.com/b/handwriting-text-any-questions-question-concept-meaning-you-say-write-order-to-ask-demonstrating-something-picture-photo-164080259.jpg')",
+                    }}
+                >
+                    <div className="bg-secondary/80 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between rounded-xl">
+                        <div className="text-white mb-6 md:mb-0">
+                            <h1 className="text-4xl font-extrabold mb-2">Your Recent Product Queries</h1>
+                            <p className="text-gray-200 text-sm mb-5">
+                                Track, update, and manage your posted product-related questions here.
+                            </p>
+                            <Link to="/add-query">
+                                <button className="btn btn-primary">Add New Query</button>
+                            </Link>
                         </div>
-                        <Lottie animationData={queriesAnim} className="w-30"></Lottie>
+                        <div className="w-40 md:w-60">
+                            <Lottie animationData={queriesAnim} />
+                        </div>
                     </div>
-                </div>
+                </motion.div>
 
+                {/* Empty State */}
                 {userQueries.length === 0 ? (
-                    <div className="text-center py-16">
-                        <h2 className="text-2xl font-bold text-gray-200">No queries found</h2>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center py-24"
+                    >
+                        <h2 className="text-2xl font-bold text-gray-300 mb-2">No queries found</h2>
                         <p className="text-gray-400 mb-4">Start by asking your first question.</p>
-                        <Link to="/add-query"><button className="btn btn-primary">Add New Query</button></Link>
-                    </div>
+                        <Link to="/add-query">
+                            <button className="btn btn-primary">Add New Query</button>
+                        </Link>
+                    </motion.div>
                 ) : (
-                    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        {userQueries.map((query) => (
-                            <div key={query._id} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition">
+                    // Grid of cards
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: {},
+                            visible: {
+                                transition: {
+                                    staggerChildren: 0.1,
+                                },
+                            },
+                        }}
+                        className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                    >
+                        {userQueries.map((query, index) => (
+                            <motion.div
+                                key={query._id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05, duration: 0.4 }}
+                                className="bg-white border border-base-300 rounded-2xl p-5 shadow-xl hover:shadow-2xl transition duration-300 flex flex-col justify-between"
+                            >
+                                {/* User Info */}
                                 <div className="flex items-center gap-3 mb-4">
-                                    <img src={query.userImage} alt={query.name} className="w-10 h-10 rounded-full object-cover border" />
+                                    <img
+                                        src={query.userImage}
+                                        alt={query.name}
+                                        className="w-10 h-10 rounded-full object-cover border"
+                                    />
                                     <div>
                                         <h2 className="text-md font-semibold">{query.name}</h2>
                                         <p className="text-sm text-gray-400">{query.userEmail}</p>
                                     </div>
                                 </div>
+
+                                {/* Product Info */}
                                 <div className="flex gap-4">
-                                    <img src={query.productImageUrl} alt={query.productName} className="w-28 h-28 object-cover rounded-lg border" />
+                                    <img
+                                        src={query.productImageUrl}
+                                        alt={query.productName}
+                                        className="w-28 h-28 object-cover rounded-lg border"
+                                    />
                                     <div className="flex-1 space-y-2">
                                         <h3 className="text-lg font-bold text-primary">{query.queryTitle}</h3>
-                                        <p className="text-sm text-gray-500"><span className="font-medium">Product:</span> {query.productName} by {query.productBrand}</p>
-                                        <p className="text-sm text-gray-600">{query.reason}</p>
-                                        <p className="text-xs text-gray-400"><span className="font-semibold">Recommendations:</span> {query.recommendationCount}</p>
+                                        <p className="text-sm text-gray-500">
+                                            <span className="font-medium">Product:</span> {query.productName} by {query.productBrand}
+                                        </p>
+                                        <p className="text-sm text-gray-600 line-clamp-2">{query.reason}</p>
+                                        <p className="text-xs text-gray-400">
+                                            <span className="font-semibold">Recommendations:</span>{" "}
+                                            {query.recommendationCount}
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="mt-4 flex gap-2">
-                                    <button onClick={() => navigate(`/query-details/${query._id}`)} className="btn btn-sm btn-primary flex items-center gap-1">
-                                        <FaEye /> View Details
+
+                                {/* Action Buttons */}
+                                <div className="mt-5 flex flex-wrap gap-2 justify-end">
+                                    <button
+                                        onClick={() => navigate(`/query-details/${query._id}`)}
+                                        className="btn btn-sm btn-primary flex items-center gap-1"
+                                    >
+                                        <FaEye /> View
                                     </button>
-                                    <button onClick={() => openEditModal(query)} className="btn btn-sm btn-secondary flex items-center gap-1">
+                                    <button
+                                        onClick={() => openEditModal(query)}
+                                        className="btn btn-sm btn-secondary flex items-center gap-1"
+                                    >
                                         <FaEdit /> Update
                                     </button>
-                                    <button onClick={() => handleDelete(query._id)} className="btn btn-sm btn-error flex items-center gap-1">
+                                    <button
+                                        onClick={() => handleDelete(query._id)}
+                                        className="btn btn-sm btn-error flex items-center gap-1"
+                                    >
                                         <FaTrash /> Delete
                                     </button>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 )}
 
                 {/* Update Modal */}
                 <dialog id="edit_modal" className="modal">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg mb-4 text-primary">Update Query</h3>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="modal-box bg-base-100 rounded-xl border border-base-300 shadow-md"
+                    >
+                        <h3 className="text-xl font-bold text-primary mb-4">Update Query</h3>
                         <div className="space-y-3">
                             <input name="productName" value={formData.productName} onChange={handleInputChange} className="input input-bordered w-full" placeholder="Product Name" />
                             <input name="productBrand" value={formData.productBrand} onChange={handleInputChange} className="input input-bordered w-full" placeholder="Product Brand" />
@@ -163,7 +237,7 @@ const MyQueries = () => {
                             </form>
                             <button onClick={handleUpdate} className="btn btn-primary">Update</button>
                         </div>
-                    </div>
+                    </motion.div>
                 </dialog>
             </div>
         </div>
