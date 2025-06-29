@@ -9,7 +9,7 @@ const Queries = () => {
     const [searchTerm, setSearchTerm] = useState(""); // 🔍 Search state
 
     useEffect(() => {
-        fetch("http://localhost:3000/queries")
+        fetch("https://alt-pick-server.vercel.app/queries")
             .then((res) => res.json())
             .then((data) => {
                 const sorted = data.sort(

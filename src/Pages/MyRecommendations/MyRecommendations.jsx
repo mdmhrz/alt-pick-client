@@ -15,7 +15,7 @@ const MyRecommendations = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axiosSecure.get(`http://localhost:3000/recommendations/recommenderEmail/${user.email}`)
+            axiosSecure.get(`https://alt-pick-server.vercel.app/recommendations/recommenderEmail/${user.email}`)
                 .then(res => setMyRecommendations(res.data))
                 .catch(() => toast.error("Failed to load your recommendations"))
                 .finally(() => setLoading(false));
@@ -33,7 +33,7 @@ const MyRecommendations = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/recommendations/${rec._id}`)
+                axios.delete(`https://alt-pick-server.vercel.app/recommendations/${rec._id}`)
                     .then((res) => {
                         if (res.data.deletedCount) {
                             toast.success("Your recommendation has been deleted.");
@@ -54,8 +54,8 @@ const MyRecommendations = () => {
             {myRecommendations.length === 0 ? (
                 <p className="text-gray-500 text-center">You haven't made any recommendations yet.</p>
             ) : (
-                <div className="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
-                    <table className="table w-full">
+                <div className="w-full overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
+                    <table className="table w-full table-auto overflow-auto min-w-4xl">
                         <thead className="bg-gray-100">
                             <tr className="text-sm text-gray-700">
                                 <th>Query</th>

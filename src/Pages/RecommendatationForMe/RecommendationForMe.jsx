@@ -40,8 +40,8 @@ const RecommendationsForMe = () => {
                 </div>
             ) : (
                 <div className="overflow-x-auto bg-base-100 rounded-2xl shadow-lg border border-base-300">
-                    <table className="table w-full text-sm">
-                        <thead className="bg-base-200 text-base-content uppercase text-xs tracking-wider">
+                    <table className="table w-full min-w-4xl overflow-x-auto text-sm">
+                        <thead className="bg-base-300 text-base-content uppercase text-xs tracking-wider">
                             <tr>
                                 <th className="p-4">Recommender</th>
                                 <th className="p-4">Query Title</th>
@@ -78,7 +78,6 @@ const RecommendationsForMe = () => {
                                     <td className="p-4 text-base-content">{rec.title}</td>
 
                                     <td className="p-4 flex items-center gap-2 text-base-content">
-                                        <FaBoxOpen className="text-primary" />
                                         {rec.product}
                                     </td>
 
@@ -90,7 +89,7 @@ const RecommendationsForMe = () => {
 
                                     <td className="p-4 text-xs text-gray-400">
                                         <div className="flex items-center gap-1">
-                                            <FaClock className="text-[12px]" />
+
                                             {new Date(rec.timestamp).toLocaleDateString()}
                                         </div>
                                     </td>

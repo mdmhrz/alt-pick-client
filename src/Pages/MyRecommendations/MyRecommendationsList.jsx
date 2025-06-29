@@ -8,9 +8,11 @@ const MyRecommendationsList = ({ rec, handleDelete }) => {
             <td className="font-medium">{rec.title}</td>
             <td>{rec.product}</td>
             <td className="text-sm text-gray-600">{rec.reason}</td>
-            <td className="text-xs text-gray-500 flex items-center gap-1">
-                <FaClock className="text-[10px]" />
-                {new Date(rec.timestamp).toLocaleString()}
+            <td className="text-xs text-gray-500 flex items-center mt-2 gap-2">
+                <div className="flex items-center gap-1">
+                    <FaClock className="text-[12px]" />
+                    {new Date(rec.timestamp).toLocaleDateString()}
+                </div>
             </td>
             <td className="text-center">
                 <button

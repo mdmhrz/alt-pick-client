@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/query-details/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/queries/${params.id}`),
+                loader: ({ params }) => fetch(`https://alt-pick-server.vercel.app/queries/${params.id}`),
                 element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>
             },
 

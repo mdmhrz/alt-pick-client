@@ -49,7 +49,7 @@ const MyQueries = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/queries/${id}`).then((res) => {
+                axios.delete(`https://alt-pick-server.vercel.app/queries/${id}`).then((res) => {
                     if (res.data.deletedCount) {
                         toast.success("Your query has been deleted.");
                         setUserQueries(userQueries.filter((query) => query._id !== id));
@@ -72,7 +72,7 @@ const MyQueries = () => {
     };
 
     const handleUpdate = () => {
-        axios.put(`http://localhost:3000/queries/${selectedQuery._id}`, formData)
+        axios.put(`https://alt-pick-server.vercel.app/queries/${selectedQuery._id}`, formData)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     toast.success("Query updated successfully.");

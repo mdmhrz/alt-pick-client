@@ -25,7 +25,7 @@ const QueryDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/recommendations/queryId/${id}`)
+        fetch(`https://alt-pick-server.vercel.app/recommendations/queryId/${id}`)
             .then((res) => res.json())
             .then(data => setRecommendations(data));
     }, [id]);
@@ -51,25 +51,25 @@ const QueryDetails = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:3000/recommendations", {
+            const res = await fetch("https://alt-pick-server.vercel.app/recommendations", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newRecommendation),
             });
 
             if (res.ok) {
-                await fetch(`http://localhost:3000/queries/increment/${query._id}`, {
+                await fetch(`https://alt-pick-server.vercel.app/queries/increment/${query._id}`, {
                     method: "PATCH",
                 });
 
                 toast.success("Recommendation added");
                 setFormData({ title: "", product: "", image: "", reason: "" });
 
-                // ✅ FIXED HERE:
-                fetch(`http://localhost:3000/recommendations/queryId/${id}`)
+
+                fetch(`https://alt-pick-server.vercel.app/recommendations/queryId/${id}`)
                     .then((r) => r.json())
                     .then(data => {
-                        setRecommendations(data); // ✅ replaces the old state properly
+                        setRecommendations(data);
                     });
             }
         } catch (error) {

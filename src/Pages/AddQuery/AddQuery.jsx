@@ -36,7 +36,7 @@ const AddQuery = () => {
 
         // console.log(fullQuery);
 
-        axios.post('http://localhost:3000/queries', { ...fullQuery })
+        axios.post('https://alt-pick-server.vercel.app/queries', { ...fullQuery })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {

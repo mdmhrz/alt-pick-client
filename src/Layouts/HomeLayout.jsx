@@ -8,7 +8,7 @@ import JoinCommunityCTA from '../components/JoinCommunityCTA/JoinCommunityCTA';
 
 const HomeLayout = () => {
 
-    const queryPromise = fetch('http://localhost:3000/queries/latest').then(res => res.json())
+    const queryPromise = fetch('https://alt-pick-server.vercel.app/queries/latest').then(res => res.json())
     return (
         <div>
             <Banner></Banner>
