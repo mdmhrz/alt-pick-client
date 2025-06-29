@@ -1,16 +1,14 @@
-"use client";
-
-import React from "react";
 import { FaUser, FaRegClock, FaTag, FaIndustry } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import "./RecentQueryStyles.css"; // Custom styles for fade + scale effect
+import "./RecentQueryStyles.css";
+import { use } from "react";
 
 const RecentQuery = ({ queryPromise }) => {
-    const queries = React.use(queryPromise);
+    const queries = use(queryPromise);
 
     return (
         <div className="bg-base-300">
@@ -51,7 +49,7 @@ const RecentQuery = ({ queryPromise }) => {
 
 
                                         <div className="flex-1">
-                                            <h3 className=" font-bold text-2xl mb-2">
+                                            <h3 className="font-semibold text-secondary text-2xl mb-2">
                                                 {query.queryTitle}
                                             </h3>
                                             <p className="text-sm text-secondary line-clamp-3">{query.reason}</p>

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FaThLarge, FaTh, FaList, FaRegThumbsUp, FaSearch } from "react-icons/fa";
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import Loading from "../../components/Loading/Loading";
 
 const Queries = () => {
     const [queries, setQueries] = useState([]);
     const [columns, setColumns] = useState(3);
-    const [searchTerm, setSearchTerm] = useState(""); // 🔍 Search state
+    const [searchTerm, setSearchTerm] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://alt-pick-server.vercel.app/queries")
@@ -16,9 +18,15 @@ const Queries = () => {
                     (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
                 );
                 setQueries(sorted);
+                setLoading(false);
             })
-            .catch((err) => console.error("Failed to load queries", err));
+            .catch((err) => {
+                console.error("Failed to load queries", err)
+                setLoading(false);
+            });
     }, []);
+
+    if (loading) return <Loading></Loading>;
 
     const getGridClass = () => {
         switch (columns) {

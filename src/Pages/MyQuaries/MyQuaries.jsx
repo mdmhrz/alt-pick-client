@@ -9,6 +9,7 @@ import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { motion } from "motion/react";
+import Loading from "../../components/Loading/Loading";
 
 
 
@@ -17,6 +18,7 @@ const MyQueries = () => {
     // console.log(user.accessToken);
     const [userQueries, setUserQueries] = useState([]);
     const [selectedQuery, setSelectedQuery] = useState(null);
+    const [loading, setLoading] = useState(true);
     // console.log(selectedQuery._id);
     const [formData, setFormData] = useState({
         productName: "",
@@ -35,8 +37,14 @@ const MyQueries = () => {
             .then((res) => {
                 const sorted = res.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 setUserQueries(sorted);
+                setLoading(false);
+            }).catch(error => {
+                console.error('Secure API error:', error);
+                setLoading(false)
             });
-    }, [user.email]);
+    }, [axiosSecure]);
+
+    if (loading) return <Loading></Loading>;
 
     const handleDelete = (id) => {
         Swal.fire({
