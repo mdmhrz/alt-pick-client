@@ -8,6 +8,7 @@ import successAnimation from "../../assets/login.json";
 import { motion } from "motion/react";
 import useAuth from "../../hooks/useAuth";
 import loginPageAnim from '../../assets/besideLogin.json'
+import { Helmet } from "react-helmet-async";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -89,9 +90,9 @@ const SignIn = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Sign In | Hobby Hub</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Sign In | AltPick</title>
+            </Helmet>
 
             <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-base-300 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

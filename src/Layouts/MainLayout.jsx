@@ -2,11 +2,13 @@ import React from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import { Outlet, useNavigate } from 'react-router';
 import Footer from '../components/Footer/Footer';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 const MainLayout = () => {
     const navigation = useNavigate();
     return (
         <div>
+            <ScrollToTop></ScrollToTop>
             <header>
                 <Navbar></Navbar>
             </header>

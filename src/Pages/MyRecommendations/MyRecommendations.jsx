@@ -6,6 +6,7 @@ import MyRecommendationsList from "./MyRecommendationsList";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyRecommendations = () => {
     const { user } = useAuth();
@@ -49,30 +50,36 @@ const MyRecommendations = () => {
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
-            <h2 className="text-2xl font-bold text-primary mb-4 text-center">My Recommendations</h2>
-            {myRecommendations.length === 0 ? (
-                <p className="text-gray-500 text-center">You haven't made any recommendations yet.</p>
-            ) : (
-                <div className="w-full overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
-                    <table className="table w-full table-auto overflow-auto min-w-4xl">
-                        <thead className="bg-gray-100">
-                            <tr className="text-sm text-gray-700">
-                                <th>Query</th>
-                                <th>Title</th>
-                                <th>Product</th>
-                                <th>Reason</th>
-                                <th>Date</th>
-                                <th className="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {myRecommendations.map((rec) => <MyRecommendationsList key={rec._id} rec={rec} handleDelete={handleDelete}></MyRecommendationsList>)}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-        </div>
+        <>
+            <Helmet>
+                <title>My Recommendations | AltPick</title>
+            </Helmet>
+
+            <div className="max-w-6xl mx-auto p-6">
+                <h2 className="text-2xl font-bold text-primary mb-4 text-center">My Recommendations</h2>
+                {myRecommendations.length === 0 ? (
+                    <p className="text-gray-500 text-center">You haven't made any recommendations yet.</p>
+                ) : (
+                    <div className="w-full overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
+                        <table className="table w-full table-auto overflow-auto min-w-4xl">
+                            <thead className="bg-gray-100">
+                                <tr className="text-sm text-gray-700">
+                                    <th>Query</th>
+                                    <th>Title</th>
+                                    <th>Product</th>
+                                    <th>Reason</th>
+                                    <th>Date</th>
+                                    <th className="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {myRecommendations.map((rec) => <MyRecommendationsList key={rec._id} rec={rec} handleDelete={handleDelete}></MyRecommendationsList>)}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

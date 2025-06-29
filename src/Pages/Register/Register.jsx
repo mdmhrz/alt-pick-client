@@ -4,11 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { motion } from "motion/react";
-// import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
 import successAnimation from "../../assets/login.json";
 import useAuth from "../../hooks/useAuth";
 import registerAnim from '../../assets/register.json'
+import { Helmet } from "react-helmet-async";
 
 
 const fadeUp = {
@@ -111,9 +111,9 @@ const Register = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Sign Up | Hobby Hub</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Register | AltPick</title>
+            </Helmet>
             <div className="min-h-[calc(100vh-64px)] bg-base-300 py-10 flex items-center justify-center px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="flex items-center justify-center">
@@ -210,7 +210,7 @@ const Register = () => {
                                     animate="visible"
                                     transition={{ delay: 0.35 }}
                                 >
-                                    {loading ? "Registering..." : "Sign Up"}
+                                    {loading ? "Registering..." : "Register"}
                                 </motion.button>
                             </motion.form>
 
