@@ -53,7 +53,7 @@ const Navbar = () => {
         <li><NavLink to='/queries'>Queries</NavLink></li>
     </>
     return (
-        <div className='bg-primary shadow-sm'>
+        <div className='bg-primary shadow-sm fixed top-0 right-0 left-0 z-50'>
             <div className="navbar w-11/12 mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -93,17 +93,37 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Logged in user routes */}
-            {
-                open &&
-                <div onClick={() => setOpen(!open)} className='absolute z-50 inset-0 bg-transparent'>
-                    <div className='absolute dropdown w-auto z-100 bg-white shadow-2xl rounded-2xl p-4 right-2 top-18 border border-base-300 space-y-2'>
-                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
-                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/myQueries'>My Queries</NavLink></li>
-                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/myRecommendations'>My recommendations</NavLink></li>
+            {/* Logged in user routes dropdown */}
+            {open && (
+                <div
+                    className="absolute inset-0 z-1000! bg-transparent"
+                    onClick={() => setOpen(false)}
+                >
+                    <div
+                        className="absolute right-2 z-10001 top-16 bg-white shadow-2xl rounded-xl p-4 border border-base-300 space-y-2"
+                        onClick={(e) => e.stopPropagation()} // prevent close when clicking inside
+                    >
+                        {/* Dropdowns */}
+                        <ul className="list-none space-y-2">
+                            <li>
+                                <NavLink className="p-route" to="/recommendationsForMe">
+                                    Recommendations For Me
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="p-route" to="/myQueries">
+                                    My Queries
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="p-route" to="/myRecommendations">
+                                    My Recommendations
+                                </NavLink>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            }
+            )}
 
 
 
