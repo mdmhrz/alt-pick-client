@@ -11,3 +11,15 @@ header li a {
     font-weight: 500;
     font-size: 1rem;
 }
+
+.p-route {
+    color: black;
+}
+
+.p-route:hover {
+    color: var(--color-primary)
+}
+
+.dropdown li .active {
+    color: var(--color-primary)
+}

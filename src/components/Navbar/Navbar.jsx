@@ -13,6 +13,7 @@ const Navbar = () => {
 
     const { user, signOutUser } = useAuth();
     const [isSignOut, setIsSignOut] = useState(false);
+    const [open, setOpen] = useState(false)
 
     const handleSignOut = () => {
         Swal.fire({
@@ -50,13 +51,6 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/queries'>Queries</NavLink></li>
-        {
-            user && <>
-                <li><NavLink to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
-                <li><NavLink to='/myQueries'>My Queries</NavLink></li>
-                <li><NavLink to='/myRecommendations'>My recommendations</NavLink></li>
-            </>
-        }
     </>
     return (
         <div className='bg-primary shadow-sm'>
@@ -85,10 +79,12 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end flex gap-3">
                     {
-                        user ? <>
-                            <button onClick={handleSignOut} className='btn'>Sign Out</button>
-                            <img title={user.displayName} className='w-10 h-10 border-base-100 border rounded-full' src={user.photoURL} alt="" />
-                        </> :
+                        user ?
+                            <div className='relative flex items-center gap-2'>
+                                <button onClick={handleSignOut} className='btn'>Sign Out</button>
+                                <img onClick={() => setOpen(!open)} title={user.displayName} className='w-10 h-10 border-base-100 border rounded-full' src={user.photoURL} alt="" />
+                            </div>
+                            :
                             <>
                                 <Link to='/register' className='btn btn-outline'>Register</Link>
                                 <Link to="/login" className='btn'>Sign In</Link>
@@ -96,6 +92,25 @@ const Navbar = () => {
                     }
                 </div>
             </div>
+
+            {/* Logged in user routes */}
+            {
+                open &&
+                <div onClick={() => setOpen(!open)} className='absolute z-50 inset-0 bg-transparent'>
+                    <div className='absolute dropdown w-auto z-100 bg-white shadow-2xl rounded-2xl p-4 right-2 top-18 border border-base-300 space-y-2'>
+                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/recommendationsForMe'>Recommendations For Me</NavLink></li>
+                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/myQueries'>My Queries</NavLink></li>
+                        <li className='list-none hover:text-primary'><NavLink className='p-route' to='/myRecommendations'>My recommendations</NavLink></li>
+                    </div>
+                </div>
+            }
+
+
+
+
+
+
+
         </div>
     );
 };
