@@ -47,7 +47,7 @@ const RecentActivityFeed = ({ activitiesPromise }) => {
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                                 whileHover={{ y: -5 }}
-                                className="bg-base-100 rounded-xl shadow-sm border border-base-300/30 hover:shadow-md transition-all overflow-hidden"
+                                className="bg-base-300 rounded-xl shadow-sm border border-base-300/30 hover:shadow-md transition-all overflow-hidden"
                             >
                                 {/* Product Image Header */}
                                 <div className="relative h-40 bg-base-200 overflow-hidden">

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const JoinCommunityCTA = () => {
     return (
-        <section className="relative py-20 px-4 bg-primary overflow-hidden text-white">
+        <section className="relative py-20 px-4 bg-accent overflow-hidden text-white">
             {/* Background Decorations */}
             <div className="absolute inset-0 bg-[url('https://25913880.fs1.hubspotusercontent-eu1.net/hub/25913880/hubfs/blog_workplace.png?width=900&name=blog_workplace.png')] bg-cover opacity-10 pointer-events-none"></div>
 
@@ -28,14 +28,14 @@ const JoinCommunityCTA = () => {
                     Track your product queries, receive helpful recommendations, and stay updated with the latest trends — all in one place.
                 </motion.p>
 
-                <div className="grid gap-2 justify-center mb-8 text-sm text-white/90">
+                <div className="grid gap-2 justify-center mb-8 text-sm text-white">
                     {[
                         "Ask product questions & get real answers",
                         "Bookmark and track your queries",
                         "Get notified when someone recommends",
                     ].map((text, idx) => (
                         <p key={idx} className="flex items-center justify-center gap-2">
-                            <FaCheckCircle className="text-[#A1F1E7]" /> {text}
+                            <FaCheckCircle className="text-primary" /> {text}
                         </p>
                     ))}
                 </div>
@@ -46,7 +46,7 @@ const JoinCommunityCTA = () => {
                 >
                     <Link
                         to="/register"
-                        className="inline-block bg-white text-[#209187] font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
+                        className="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
                     >
                         Sign Up Today
                     </Link>

@@ -9,6 +9,7 @@ import Lottie from 'lottie-react';
 import useAuth from '../../hooks/useAuth';
 import logo from '../../assets/white-logo.png';
 import { FaRegLightbulb, FaClipboardList, FaComments } from "react-icons/fa";
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const Navbar = () => {
 
@@ -81,6 +82,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-3">
+                    <ThemeToggle></ThemeToggle>
                     {
                         user ?
                             <div className='relative flex items-center gap-2'>

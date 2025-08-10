@@ -76,9 +76,9 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder="Your email"
-                                className="input input-bordered w-full rounded-l bg-white text-black placeholder-gray-500"
+                                className="input input-bordered w-full rounded-bl-lg rounded-tl-lg rounded-br-none rounded-tr-none bg-white text-black placeholder-gray-500"
                             />
-                            <button className="btn shadow-none bg-primary hover:bg-[#1b766c] border-none text-white rounded-l-none">
+                            <button className="btn shadow-none bg-primary hover:bg-[#1b766c] border-none text-white rounded-br-lg rounded-tr-lg rounded-bl-none rounded-tl-none">
                                 Subscribe
                             </button>
                         </div>

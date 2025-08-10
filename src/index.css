@@ -2,21 +2,51 @@
 
 @import "tailwindcss";
 
-@plugin "daisyui" {
+/* @plugin "daisyui" {
   themes: light --default;
+} */
+
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
 }
 
-body {
-  font-family: "Space Grotesk", "Tiro Bangla", serif;
-}
 
 
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
   --color-primary: #209187;
-  --color-secondary: #2f3239;
+  --color-secondary: #27292b;
   --color-accent: #e0ad1f;
 }
 
+.fm {
+  color: #032b55;
+  color: #27292b;
+  color: #e0ad1f;
+}
 
+
+/* @plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #3b82f6;
+  --color-secondary: #6b7280;
+
+} */
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #6b8e23;
+  --color-secondary: #8b8b7a;
+
+}
+
+
+
+
+
+
+body {
+  font-family: "Space Grotesk", "Tiro Bangla", serif;
+}

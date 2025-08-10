@@ -5,31 +5,35 @@ import { motion } from 'framer-motion';
 const HowItWorks = () => {
     const steps = [
         {
+            id: 1,
             icon: <FiEdit3 className="text-3xl" />,
             title: 'Post Your Query',
             description: 'Ask for alternatives by posting your product query in seconds.',
-            color: 'bg-indigo-100',
+            color: 'bg-indigo-600/10',
             accent: 'text-indigo-600'
         },
         {
+            id: 2,
             icon: <FiMessageCircle className="text-3xl" />,
             title: 'Get Recommendations',
             description: 'Our community suggests vetted alternatives tailored to your needs.',
-            color: 'bg-blue-100',
+            color: 'bg-blue-600/10',
             accent: 'text-blue-600'
         },
         {
+            id: 3,
             icon: <FiThumbsUp className="text-3xl" />,
             title: 'Vote & Discuss',
             description: 'Collaborate with others to identify the best options available.',
-            color: 'bg-green-100',
+            color: 'bg-green-600/10',
             accent: 'text-green-600'
         },
         {
+            id: 4,
             icon: <FiCheckCircle className="text-3xl" />,
             title: 'Choose the Best',
             description: 'Make confident purchase decisions with community insights.',
-            color: 'bg-purple-100',
+            color: 'bg-purple-600/10',
             accent: 'text-purple-600'
         }
     ];
@@ -81,7 +85,7 @@ const HowItWorks = () => {
 
                 <div className="relative">
                     {/* Timeline connector */}
-                    <div className="hidden lg:block absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-indigo-200 via-blue-200 to-green-200 rounded-full"></div>
+                    {/* <div className="hidden lg:block absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-indigo-200 via-blue-200 to-green-200 rounded-full"></div> */}
 
                     <motion.div
                         initial="hidden"
@@ -97,6 +101,7 @@ const HowItWorks = () => {
                                 whileHover={{ y: -10 }}
                                 className="relative"
                             >
+                                <p className='p-3 rounded-full w-10 h-10 bg-accent text-white absolute text-center flex items-center justify-center -top-5 left-0 right-0 z-20'>{index + 1}</p>
                                 <div className={`${step.color} ${step.accent} p-8 rounded-2xl shadow-lg h-full flex flex-col items-center text-center relative z-10 border border-base-300/50 hover:shadow-xl transition-all`}>
                                     <div className={`mb-6 p-4 rounded-full ${step.color.replace('100', '50')} border-2 ${step.accent.replace('text', 'border')}`}>
                                         {step.icon}
