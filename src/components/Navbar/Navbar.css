@@ -12,14 +12,19 @@ header li a {
     font-size: 1rem;
 }
 
-.p-route {
-    color: black;
+.p-route>li>a {
+    text-decoration: none;
 }
 
-.p-route:hover {
+
+
+
+
+
+.menu-sm li a:active {
     color: var(--color-primary)
 }
 
-.dropdown li .active {
-    color: var(--color-primary)
+.menu-sm li a {
+    color: black
 }

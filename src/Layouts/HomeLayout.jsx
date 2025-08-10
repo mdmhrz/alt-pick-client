@@ -6,10 +6,14 @@ import { Suspense } from 'react';
 import Loading from '../components/Loading/Loading';
 import JoinCommunityCTA from '../components/JoinCommunityCTA/JoinCommunityCTA';
 import { Helmet } from 'react-helmet-async';
+import HowItWorks from '../components/HowItWorks/HowItWorks';
+import MobileAppPromotion from '../components/MobileAppPromotion/MobileAppPromotion';
+import RecentActivityFeed from '../components/RecentActivityFeed/RecentActivityFeed';
 
 const HomeLayout = () => {
 
-    const queryPromise = fetch('https://alt-pick-server.vercel.app/queries/latest').then(res => res.json())
+    const queryPromise = fetch('https://alt-pick-server.vercel.app/queries/latest').then(res => res.json());
+    const activitiesPromise = fetch('https://alt-pick-server.vercel.app/recommendations/recent').then(res => res.json());
     return (
 
         <>
@@ -21,8 +25,13 @@ const HomeLayout = () => {
                 <Suspense fallback={<Loading></Loading>}>
                     <RecentQuery queryPromise={queryPromise}></RecentQuery>
                 </Suspense>
+                <Suspense fallback={<Loading></Loading>}>
+                    <RecentActivityFeed activitiesPromise={activitiesPromise}></RecentActivityFeed>
+                </Suspense>
+                <HowItWorks></HowItWorks>
                 <WhyChooseUs></WhyChooseUs>
                 <JoinCommunityCTA></JoinCommunityCTA>
+                <MobileAppPromotion></MobileAppPromotion>
             </div>
         </>
     );

@@ -36,9 +36,9 @@ const Queries = () => {
             case 2:
                 return "grid-cols-1 sm:grid-cols-2";
             case 3:
-                return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+                return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
             default:
-                return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+                return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
         }
     };
 
@@ -53,7 +53,7 @@ const Queries = () => {
                 <title>Queries | AltPick</title>
             </Helmet>
             <div className=" bg-base-300">
-                <div className="w-11/12 max-w-7xl mx-auto px-4 py-20">
+                <div className="w-11/12 mx-auto py-20">
 
                     {/* Header */}
                     <motion.div
