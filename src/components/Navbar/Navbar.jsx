@@ -51,10 +51,12 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/queries'>Queries</NavLink></li>
+        <li><NavLink to='/about-us'>About Us</NavLink></li>
+        <li><NavLink to='/support'>Support</NavLink></li>
     </>
     return (
-        <div className='bg-primary shadow-sm fixed top-0 right-0 left-0 z-50'>
-            <div className="navbar w-11/12 mx-auto ">
+        <div className='bg-primary shadow-sm fixed top-0 right-0 left-0 z-100'>
+            <div className="navbar w-11/12 mx-auto px-0 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -96,11 +98,11 @@ const Navbar = () => {
             {/* Logged in user routes dropdown */}
             {open && (
                 <div
-                    className="absolute inset-0 z-1000! bg-transparent"
+                    className="absolute inset-0 h-screen z-40 bg-transparent"
                     onClick={() => setOpen(false)}
                 >
                     <div
-                        className="absolute right-2 z-10001 top-16 bg-white shadow-2xl rounded-xl p-4 border border-base-300 space-y-2"
+                        className="absolute right-2 z-100 top-16 bg-white shadow-2xl rounded-xl p-4 border border-base-300 space-y-2"
                         onClick={(e) => e.stopPropagation()} // prevent close when clicking inside
                     >
                         {/* Dropdowns */}

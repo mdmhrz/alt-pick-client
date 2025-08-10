@@ -7,7 +7,7 @@ import logo from '../../assets/footer-logo.png'
 
 const Footer = () => {
     return (
-        <footer className="relative text-base-100 px-6 py-16 overflow-hidden mt-20">
+        <footer className="relative text-base-100 py-16 overflow-hidden">
             <div className='w-11/12 mx-auto'>
                 {/* Background image with 20% opacity */}
                 <div
@@ -29,7 +29,7 @@ const Footer = () => {
 
 
                 {/* Content overlay */}
-                <div className="relative w-11/12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 z-20">
+                <div className="relative grid grid-cols-1 md:grid-cols-4 gap-10 z-20">
                     {/* Brand Info */}
                     <div>
                         <div className='flex items-center gap-2 justify-start'>
@@ -61,10 +61,10 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold mb-4 text-white">Support</h3>
                         <ul className="space-y-2 text-sm text-gray-300">
-                            <li><a href="/faq" className="hover:text-[#209187]">FAQ</a></li>
-                            <li><a href="/contact" className="hover:text-[#209187]">Contact</a></li>
-                            <li><a href="/terms" className="hover:text-[#209187]">Terms of Service</a></li>
-                            <li><a href="/privacy" className="hover:text-[#209187]">Privacy Policy</a></li>
+                            <li><a href="/contact" className="hover:text-[#209187]">About Us</a></li>
+                            <li><a href="/faq" className="hover:text-[#209187]">Support & FAQ</a></li>
+                            <li><a href="/termsAndService" className="hover:text-[#209187]">Terms of Service</a></li>
+                            <li><a href="/privacy-policy" className="hover:text-[#209187]">Privacy Policy</a></li>
                         </ul>
                     </div>
 

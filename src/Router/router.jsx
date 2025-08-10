@@ -11,6 +11,10 @@ import AddQuery from "../Pages/AddQuery/AddQuery";
 import MyQueries from "../Pages/MyQuaries/MyQuaries";
 import QueryDetails from "../Pages/QueryDetails/QueryDetails";
 import Queries from "../Pages/Queries/Queries";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import ContactSupport from "../Pages/ContactSupport/ContactSupport";
+import TermsOfService from "../Pages/TermsOfService/TermsOfService";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 
 
 
@@ -26,6 +30,22 @@ const router = createBrowserRouter([
             {
                 path: '/queries',
                 Component: Queries
+            },
+            {
+                path: '/about-us',
+                Component: AboutUs
+            },
+            {
+                path: '/support',
+                Component: ContactSupport
+            },
+            {
+                path: '/termsAndService',
+                Component: TermsOfService
+            },
+            {
+                path: '/privacy-policy',
+                Component: PrivacyPolicy
             },
             {
                 path: '/login',

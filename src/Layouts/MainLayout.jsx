@@ -9,7 +9,7 @@ const MainLayout = () => {
     return (
         <div>
             <ScrollToTop></ScrollToTop>
-            <header className='relative mb-[64px] md:mb-[68px] '>
+            <header className='mb-[64px] md:mb-[68px] '>
                 <Navbar></Navbar>
             </header>
             <main className='min-h-[calc(100vh-64px)]'>
