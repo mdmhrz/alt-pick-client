@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const ThemeToggle = ({ setCurrentTheme }) => {
     const [theme, setTheme] = useState(() => {
         // Read theme from localStorage on first render
-        return localStorage.getItem("theme") || "dark";
+        return localStorage.getItem("theme") || "light";
     });
 
     useEffect(() => {

@@ -16,12 +16,7 @@ const Navbar = () => {
     const { user, signOutUser } = useAuth();
     const [isSignOut, setIsSignOut] = useState(false);
     const [open, setOpen] = useState(false)
-    // let theme = ''
-    // useEffect(() => {
-    //     const theme = localStorage.getItem("theme");
-    //     setCurrentTheme(theme);
-    // }, [theme]);
-    // console.log(currentTheme);
+ 
 
 
     const handleSignOut = () => {

@@ -46,7 +46,7 @@ const RecentQuery = ({ queryPromise }) => {
                         >
                             {queries.map((query) => (
                                 <SwiperSlide key={query._id} className="group transition-all duration-500 relative">
-                                    <div className="relative bg-base-100 border border-base-300 p-4 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between transition-all duration-300 h-auto sm:h-[440px] group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100 scale-95 opacity-50">
+                                    <div className="relative bg-base-100 p-4 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between transition-all duration-300 h-auto sm:h-[440px] group-[.swiper-slide-active]:scale-100 group-[.swiper-slide-active]:opacity-100 scale-95 opacity-50">
 
                                         {/* Query Title & Reason */}
                                         <div className="flex-1">
@@ -60,7 +60,7 @@ const RecentQuery = ({ queryPromise }) => {
                                                 <img
                                                     src={query.productImageUrl}
                                                     alt={query.productName}
-                                                    className="mt-4 w-full h-36 object-cover rounded-md border"
+                                                    className="mt-4 w-full h-36 object-cover rounded-md "
                                                 />
                                             )}
                                         </div>

@@ -3,9 +3,7 @@
 
 @import "tailwindcss";
 
-/* @plugin "daisyui" {
-  themes: light --default;
-} */
+
 
 
 @plugin "daisyui" {
@@ -22,11 +20,7 @@
   --color-accent: #e0ad1f;
 }
 
-.fm {
-  color: #afacac;
-  color: #0f1011;
-  color: #e0ad1f;
-}
+
 
 
 @plugin "daisyui/theme" {
@@ -34,16 +28,6 @@
   --color-primary: #3b82f6;
   --color-secondary: #fffff;
 }
-
-/* @plugin "daisyui/theme" {
-  name: "dark";
-  --color-primary: #6b8e23;
-  --color-secondary: #8b8b7a;
-
-} */
-
-
-
 
 
 
