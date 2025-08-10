@@ -132,7 +132,8 @@ const SignIn = () => {
                                     <div className="relative">
                                         <FaUserAlt className="absolute top-1/2 left-3 -translate-y-1/2 text-secondary z-50" />
                                         <input
-                                            defaultValue={email}
+                                            // defaultValue={email}
+                                            defaultValue={'admin@altpick.com'}
                                             onChange={(e) => setEmail(e.target.value)}
                                             id="email"
                                             type="email"
@@ -152,6 +153,7 @@ const SignIn = () => {
                                     <div className="relative">
                                         <FaLock className="absolute top-1/2 left-3 -translate-y-1/2 text-secondary z-50" />
                                         <input
+                                            defaultValue={'Pa$$word'}
                                             id="password"
                                             type="password"
                                             name="password"

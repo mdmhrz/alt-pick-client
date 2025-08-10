@@ -1,6 +1,13 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const ContactSupport = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        toast.success('Your Message has been successfully sent')
+    }
+
+
     return (
         <div className="bg-base-300">
             <section className="w-11/12 mx-auto py-20">
@@ -34,6 +41,8 @@ const ContactSupport = () => {
                                             </label>
                                             <input
                                                 type="text"
+                                                name="name"
+                                                required
                                                 placeholder="John Doe"
                                                 className="input input-bordered w-full"
                                             />
@@ -44,7 +53,9 @@ const ContactSupport = () => {
                                                 <span className="label-text text-secondary font-semibold">Email Address</span>
                                             </label>
                                             <input
+                                                required
                                                 type="email"
+                                                name="email"
                                                 placeholder="john@example.com"
                                                 className="input input-bordered w-full"
                                             />
@@ -54,7 +65,7 @@ const ContactSupport = () => {
                                             <label className="label">
                                                 <span className="label-text text-secondary font-semibold">Subject</span>
                                             </label>
-                                            <select className="select select-bordered w-full">
+                                            <select required className="select select-bordered w-full">
                                                 <option disabled selected>What's this about?</option>
                                                 <option>Product Alternative Request</option>
                                                 <option>Account Support</option>
@@ -69,13 +80,15 @@ const ContactSupport = () => {
                                                 <span className="label-text text-secondary font-semibold">Your Message</span>
                                             </label>
                                             <textarea
+                                                required
+                                                name="message"
                                                 className="textarea textarea-bordered h-32 w-full"
                                                 placeholder="How can we help you today?"
                                             ></textarea>
                                         </div>
 
                                         <div className="form-control mt-8">
-                                            <button className="btn btn-primary w-full">
+                                            <button type="submit" onClick={handleSubmit} className="btn btn-primary w-full">
                                                 Send Message
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
@@ -120,8 +133,8 @@ const ContactSupport = () => {
                                             <a href="tel:+18005551234" className="text-accent hover:underline">+1 (800) 555-1234</a>
                                         </div>
                                     </div>
-
-                                    <div className="flex items-start gap-4">
+                                    {/* Live Chat */}
+                                    {/* <div className="flex items-start gap-4">
                                         <div className="bg-accent/10 p-3 rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
@@ -132,7 +145,7 @@ const ContactSupport = () => {
                                             <p className="text-secondary">Instant help during business hours</p>
                                             <button className="btn btn-sm btn-accent mt-2">Start Chat</button>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
 
@@ -174,7 +187,7 @@ const ContactSupport = () => {
                                         </div>
                                     ))}
                                 </div>
-                                <a href="/faq" className="text-accent hover:underline mt-4 inline-block">View all FAQs →</a>
+                                {/* <a href="/faq" className="text-accent hover:underline mt-4 inline-block">View all FAQs →</a> */}
                             </div>
                         </div>
                     </div>

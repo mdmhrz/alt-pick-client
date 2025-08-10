@@ -4,8 +4,13 @@ import Lottie from 'lottie-react';
 import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router';
 import logo from '../../assets/footer-logo.png'
+import { toast } from 'react-toastify';
 
 const Footer = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast.success('Your subscription has been submitted')
+    }
     return (
         <footer className="relative text-base-100 py-16 overflow-hidden">
             <div className='w-11/12 mx-auto'>
@@ -48,7 +53,7 @@ const Footer = () => {
 
                     {/* Navigation */}
                     <div>
-                        <h3 className="font-semibold mb-4">Explore</h3>
+                        <h3 className="text-white font-semibold mb-4">Explore</h3>
                         <ul className="space-y-2 text-sm text-gray-300">
                             <li><Link to='/' className="hover:text-primary">Home</Link></li>
                             <li><Link to="/queries" className="hover:text-[#209187]">Queries</Link></li>
@@ -72,16 +77,17 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold mb-4 text-white">Stay Updated</h3>
                         <p className="text-sm text-gray-300 mb-3">Subscribe to our newsletter to get the latest updates.</p>
-                        <div className="flex">
+                        <form onSubmit={handleSubmit} className="flex">
                             <input
+                                required
                                 type="email"
                                 placeholder="Your email"
                                 className="input input-bordered w-full rounded-bl-lg rounded-tl-lg rounded-br-none rounded-tr-none bg-white text-black placeholder-gray-500"
                             />
-                            <button className="btn shadow-none bg-primary hover:bg-[#1b766c] border-none text-white rounded-br-lg rounded-tr-lg rounded-bl-none rounded-tl-none">
+                            <button type='submit' className="btn shadow-none bg-primary hover:bg-[#1b766c] border-none text-white rounded-br-lg rounded-tr-lg rounded-bl-none rounded-tl-none">
                                 Subscribe
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
