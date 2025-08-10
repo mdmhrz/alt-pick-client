@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 const Queries = () => {
     const [queries, setQueries] = useState([]);
-    const [columns, setColumns] = useState(3);
+    const [columns, setColumns] = useState(4);
     const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(true);
     const [sortBy, setSortBy] = useState("newest"); // "newest", "oldest", "popular"
@@ -76,7 +76,7 @@ const Queries = () => {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4">
                             Discover Real Product Concerns
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
