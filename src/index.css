@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Tiro+Bangla:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Tiro+Bangla:ital@0;1&display=swap');
+
 
 @import "tailwindcss";
 
@@ -22,25 +23,24 @@
 }
 
 .fm {
-  color: #032b55;
-  color: #27292b;
+  color: #afacac;
+  color: #0f1011;
   color: #e0ad1f;
 }
 
 
-/* @plugin "daisyui/theme" {
+@plugin "daisyui/theme" {
   name: "dark";
   --color-primary: #3b82f6;
-  --color-secondary: #6b7280;
+  --color-secondary: #fffff;
+}
 
-} */
-
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
   name: "dark";
   --color-primary: #6b8e23;
   --color-secondary: #8b8b7a;
 
-}
+} */
 
 
 
@@ -48,5 +48,5 @@
 
 
 body {
-  font-family: "Space Grotesk", "Tiro Bangla", serif;
+  font-family: "Roboto", "Tiro Bangla", serif;
 }

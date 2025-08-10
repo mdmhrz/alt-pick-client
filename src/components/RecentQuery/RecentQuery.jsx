@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import "./RecentQueryStyles.css";
 import { use } from "react";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const RecentQuery = ({ queryPromise }) => {
     const queries = use(queryPromise);
@@ -14,12 +15,8 @@ const RecentQuery = ({ queryPromise }) => {
         <div className="bg-base-300">
             <div className="py-20 px-4 w-11/12 mx-auto">
                 {/* Heading */}
-                <div className="text-center mb-10">
-                    <h2 className="text-4xl font-bold text-primary">Explore Latest Product Queries</h2>
-                    <p className="text-sm text-base-content mt-2 max-w-xl mx-auto">
-                        Discover real-time queries from our community. Learn from others and share your own experience.
-                    </p>
-                </div>
+                <SectionHeading title={'Explore Latest Product Queries'} subtitle={'Discover real-time queries from our community. Learn from others and share your own experience.'}></SectionHeading>
+
 
                 {/* Slider */}
                 <div className="max-w-6xl mx-auto">
@@ -56,7 +53,7 @@ const RecentQuery = ({ queryPromise }) => {
                                             <h3 className="font-semibold text-secondary text-xl sm:text-2xl mb-2">
                                                 {query.queryTitle}
                                             </h3>
-                                            <p className="text-sm text-gray-600 line-clamp-3">{query.reason}</p>
+                                            <p className="text-sm text-gray-400 line-clamp-3">{query.reason}</p>
 
                                             {/* Product Image */}
                                             {query.productImageUrl && (

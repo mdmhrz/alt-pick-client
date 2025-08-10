@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaLeaf, FaLightbulb, FaShieldAlt, FaUser } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import SectionHeading from '../SectionHeading/SectionHeading';
 
 const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -17,22 +18,9 @@ const cardVariants = {
 
 const WhyChooseUs = () => {
     return (
-        <div className='bg-base-300'>
+        <div className='bg-base-100 mb-10'>
             <section className="py-16 w-11/12 mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16 px-6"
-                >
-                    <h2 className="text-3xl text-secondary font-bold mb-4">
-                        Why Choose Our Platform
-                    </h2>
-                    <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                        Join thousands of conscious consumers making better choices every day
-                    </p>
-                </motion.div>
+                <SectionHeading title={'Why Choose Our Platform'} subtitle={'Join thousands of conscious consumers making better choices every day'}></SectionHeading>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6">
                     {[ // data-based rendering for simplicity and scalability
@@ -63,7 +51,7 @@ const WhyChooseUs = () => {
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            className="text-center p-6 rounded-lg bg-base-100 transform transition-transform duration-500 hover:-translate-y-2 shadow-md"
+                            className="text-center p-6 rounded-lg bg-base-300 transform transition-transform duration-500 hover:-translate-y-2 shadow-md"
                             variants={cardVariants}
                             initial="hidden"
                             whileInView="visible"

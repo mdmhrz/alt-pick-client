@@ -3,7 +3,7 @@ import image from './../../assets/frustrated-woman.jpg'
 
 const AboutUs = () => {
     return (
-        <section className="bg-base-100 py-20">
+        <section className="bg-base-300 py-20">
             <div className="w-11/12 mx-auto">
                 {/* Hero Section */}
                 <div className="flex flex-col lg:flex-row items-center gap-12 mb-20 ">

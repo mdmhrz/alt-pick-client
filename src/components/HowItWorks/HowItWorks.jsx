@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiEdit3, FiMessageCircle, FiThumbsUp, FiCheckCircle } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import SectionHeading from '../SectionHeading/SectionHeading';
 
 const HowItWorks = () => {
     const steps = [
@@ -60,32 +61,12 @@ const HowItWorks = () => {
     };
 
     return (
-        <section className="bg-gradient-to-b from-base-100 to-base-200 py-20 px-4 sm:px-6 lg:px-8">
+        <section className="bg-base-300 py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={containerVariants}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold text-primary font-primary mb-4"
-                    >
-                        How AltPick Works
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-xl text-secondary max-w-3xl mx-auto"
-                    >
-                        Discover better products through our simple 4-step community-powered process
-                    </motion.p>
-                </motion.div>
+                <SectionHeading title={'How AltPick Works'} subtitle={'Discover better products through our simple 4-step community-powered process'}></SectionHeading>
 
                 <div className="relative">
-                    {/* Timeline connector */}
-                    {/* <div className="hidden lg:block absolute left-0 right-0 top-1/2 h-1 bg-gradient-to-r from-indigo-200 via-blue-200 to-green-200 rounded-full"></div> */}
+
 
                     <motion.div
                         initial="hidden"

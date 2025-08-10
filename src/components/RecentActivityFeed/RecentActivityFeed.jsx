@@ -5,6 +5,7 @@ import { formatDistanceToNow } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
 import { use } from "react";
 import userImage from '../../assets/user.png'
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const RecentActivityFeed = ({ activitiesPromise }) => {
     const activities = use(activitiesPromise);
@@ -15,26 +16,8 @@ const RecentActivityFeed = ({ activitiesPromise }) => {
         <section className="bg-base-100 py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold text-primary mb-3"
-                    >
-                        Community Recommendations
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="text-lg text-secondary max-w-2xl mx-auto"
-                    >
-                        Recently suggested product alternatives by our community
-                    </motion.p>
-                </div>
+                <SectionHeading title={'Community Recommendations'} subtitle={'Recently suggested product alternatives by our community'}></SectionHeading>
+
 
                 {/* Activity Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
