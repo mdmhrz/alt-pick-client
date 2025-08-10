@@ -46,15 +46,15 @@ const JoinCommunityCTA = () => {
                         <div className="bg-white/10 p-8 rounded-3xl backdrop-blur-sm border border-white/20">
                             <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { icon: <FaLightbulb className="text-4xl text-yellow-400" />, bg: "bg-yellow-500/20" },
-                                    { icon: <FaUsers className="text-4xl text-blue-200" />, bg: "bg-blue-500/20" },
+                                    { icon: <FaLightbulb className="text-4xl text-yellow-500" />, bg: "bg-yellow-500/20" },
+                                    { icon: <FaUsers className="text-4xl text-white" />, bg: "bg-blue-500/20" },
                                     { icon: <FaHeart className="text-4xl text-pink-400" />, bg: "bg-pink-500/20" },
-                                    { icon: <AiOutlineProduct className="text-4xl text-accent" />, bg: "bg-accent/20" },
-                                    <div key="cta" className="col-span-2">
-                                        <div className="h-full bg-white/10 rounded-xl p-4 flex items-center justify-center">
-                                            <span className="text-lg font-medium">100K+ Happy Members</span>
-                                        </div>
-                                    </div>
+                                    { icon: <AiOutlineProduct className="text-4xl text-blue-400" />, bg: "bg-accent/20" },
+                                    // <div key="cta" className="col-span-2">
+                                    //     <div className="h-full bg-white/10 rounded-xl p-4 flex items-center justify-center">
+                                    //         <span className="text-lg font-medium">100K+ Happy Members</span>
+                                    //     </div>
+                                    // </div>
                                 ].map((item, idx) => (
                                     <div
                                         key={idx}
